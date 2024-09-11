@@ -251,10 +251,12 @@
             <div class="w-full bg-white py-20 flex items-center gap-2 justify-between flex-col md:flex-row">
                 <h1 class="text-3xl font-semibold text-neutral-700">Escolha o ano escolar</h1>
                 <div class="flex gap-2">
-                    <button class="btn bg-gray-600 text-white px-4 py-2 rounded-full" @click="type = 'initial'">
+                    <button class="btn px-4 py-2 rounded-full" @click="type = 'initial'"
+                        :class="{'bg-gray-600 text-white' : type === 'initial', 'text-gray-600' : type !== 'initial'}">
                         Anos Iniciais
                     </button>
-                    <button class="btn bg-white text-gray-600 px-4 py-2 rounded-full" @click="type = 'final'">
+                    <button class="btn px-4 py-2 rounded-full" @click="type = 'final'"
+                        :class="{'bg-gray-600 text-white' : type === 'final', 'text-gray-600' : type !== 'final'}">
                         Anos Finais
                     </button>
                 </div>
