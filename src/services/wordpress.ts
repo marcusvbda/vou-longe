@@ -10,7 +10,7 @@ export const getAcfField = async (
 	try {
 		const postId = (PostIds as any)?.[post] || 0;
 		const res = await fetch(
-			`${process.env.NEXT_PUBLIC_WP_URL}/wp-json/acf/v3/posts/${postId}?field=${field}`
+			`${process.env.NEXT_PUBLIC_WP_URL}/wp-json/acf/v3/content/${postId}?field=${field}`
 		);
 
 		const result = await res.json();
