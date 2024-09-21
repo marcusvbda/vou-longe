@@ -1,6 +1,6 @@
 'use client';
 
-import { getAcfField } from '@/services/wordpress';
+import { findPost, getPosts } from '@/services/wordpress';
 import { useEffect, useMemo, useState } from 'react';
 
 export default function Login() {
@@ -17,7 +17,15 @@ export default function Login() {
 	}, []);
 
 	useEffect(() => {
-		getAcfField('general', 'test_name').then((res: any) => {
+		getPosts('tipo-de-ano').then((res: any) => {
+			console.log(res);
+		});
+
+		findPost('ano', 'acf.tipo_do_ano', 39).then((res: any) => {
+			console.log(res);
+		});
+
+		findPost('ano', 'acf.tipo_do_ano', 39).then((res: any) => {
 			console.log(res);
 		});
 	}, []);
