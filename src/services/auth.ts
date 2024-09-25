@@ -1,6 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { findPost, getPosts } from './wordpress';
 
 export const login = (form: any) => {
 	if (form.username === 'admin@admin.com' && form.password === 'admin') {
@@ -41,4 +42,9 @@ export const getSession = () => {
 	const token = cookies().get('session-token')?.value;
 	if (!token) return null;
 	return JSON.parse(token);
+};
+
+export const getSite = async () => {
+	const result = await findPost('site', 'slug', 'vou-mais-longe');
+	return result;
 };

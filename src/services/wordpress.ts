@@ -7,7 +7,9 @@ export const getPosts = async (postType: string, params: any = {}) => {
 	}?order=${params.order || 'asc'}&orderby=${params.orderby || 'id'}&per_page=${
 		params.per_page || 100
 	}&page=${page}`;
-	const res = await fetch(route);
+	const res = await fetch(route, {
+		cache: 'no-store',
+	});
 
 	const pages = res.headers.get('X-WP-TotalPages');
 	const total = res.headers.get('X-WP-Total');

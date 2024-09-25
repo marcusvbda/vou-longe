@@ -7,9 +7,8 @@ export const GlobalContext = createContext<any>({});
 
 export const GlobalContextProvider = ({
 	children,
-	serverSession,
+	session,
 }: any): ReactNode => {
-	const [session, setSession] = useState<any>(serverSession);
 	const [processedYears, setProcessedYears] = useState<any>(null);
 	const [loadingYears, setLoadingYears] = useState(true);
 
@@ -70,7 +69,6 @@ export const GlobalContextProvider = ({
 		<GlobalContext.Provider
 			value={{
 				session,
-				setSession,
 				processedYears,
 				setProcessedYears,
 				loadingYears,

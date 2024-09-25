@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import 'sweetalert2/src/sweetalert2.scss';
 import './globals.scss';
-import { getSession } from '@/services/auth';
+import { getSession, getSite } from '@/services/auth';
 import { GlobalContextProvider } from './context/globalContext';
+import { ThemeContextProvider } from './context/themeContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -11,14 +12,15 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: any) {
-	const session = await getSession();
-
+	const [session, site] = await Promise.all([getSession(), getSite()]);
 	return (
 		<html lang="pt-BR" className="h-fill">
 			<body suppressHydrationWarning className={inter.className}>
-				<GlobalContextProvider serverSession={session}>
-					{children}
-				</GlobalContextProvider>
+				<ThemeContextProvider site={site}>
+					<GlobalContextProvider session={session}>
+						{children}
+					</GlobalContextProvider>
+				</ThemeContextProvider>
 			</body>
 		</html>
 	);
