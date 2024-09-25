@@ -1,83 +1,52 @@
 'use client';
 
-import { findPost, getPosts } from '@/services/wordpress';
-import { useEffect, useMemo, useState } from 'react';
+import AspectRatio from '@/components/aspectRatio';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { useRouter } from 'next/navigation';
+import { login, logout } from '@/services/auth';
 
 export default function Login() {
-	const [step, setStep] = useState<any>('student');
-
-	const currentYear = useMemo(() => new Date().getFullYear(), []);
-
-	const steps: any = useMemo(() => {
-		return {
-			student: 'Aluno',
-			teacher: 'Professor',
-			manager: 'Gestor',
-		};
-	}, []);
+	const router = useRouter();
+	const [loading, setLoading] = useState(false);
+	const [form, setForm] = useState({
+		username: 'admin@admin.com',
+		password: 'admin',
+		remember: false,
+	});
 
 	useEffect(() => {
-		getPosts('tipo-de-ano').then((res: any) => {
-			console.log(res);
-		});
-
-		findPost('ano', 'acf.tipo_do_ano', 39).then((res: any) => {
-			console.log(res);
-		});
-
-		findPost('ano', 'acf.tipo_do_ano', 39).then((res: any) => {
-			console.log(res);
-		});
+		logout();
 	}, []);
 
+	const onSubmitHandler = async (e: any) => {
+		setLoading(true);
+		e.preventDefault();
+		const _data = await login(form);
+		if (!_data.success && _data.message) {
+			Swal.fire({
+				title: 'Ooops !',
+				text: _data.message,
+				icon: 'error',
+				confirmButtonText: 'Tentar novamente',
+			});
+			setLoading(false);
+		}
+		router.push('/');
+	};
+
 	return (
-		<>
-			<form className="mt-20">
+		<div className="bg-white p-6 flex item-center justify-center rounded-xl flex-col mt-10">
+			<div className="bg-gray-100 rounded-xl max-w-[362px] py-8 px-10 flex items-center justify-center self-center relative -top-12">
+				<AspectRatio src="/assets/images/logo-gray.svg" size={{ height: 48 }} />{' '}
+			</div>
+
+			<form onSubmit={(e: any) => onSubmitHandler(e)}>
 				<h1 className="text-3xl text-black font-semibold mb-4">Login</h1>
 				<small className="text-gray-600">
 					Bem vindo de volta! Por favor, insira seus dados abaixo.
 				</small>
-
-				<div className="w-full mt-8 p-1 border border-gray-300 flex gap-1 bg-gray-100 rounded-lg">
-					{Object.keys(steps).map((row, index) => (
-						<button
-							type="button"
-							key={index}
-							className={`flex-1 shadown h-10 transition duration-300 flex items-center justify-center rounded-lg cursor-pointer ${
-								step === row ? 'bg-white border border-gray-300' : ''
-							}`}
-							onClick={() => setStep(row)}
-						>
-							{steps[row]}
-						</button>
-					))}
-				</div>
-
 				<div className="flex flex-col gap-6 mt-10">
-					{step === 'student' && (
-						<div className="flex flex-col gap-4">
-							<div className="flex flex-col gap-1">
-								<label className="text-neutral-700">RA</label>
-								<input
-									className="border border-gray-200 p-2 rounded-lg"
-									placeholder="Insira seu RA"
-								/>
-							</div>
-						</div>
-					)}
-
-					{step === 'teacher' && (
-						<div className="flex flex-col gap-4">
-							<div className="flex flex-col gap-1">
-								<label className="text-neutral-700">Código da Escola</label>
-								<input
-									className="border border-gray-200 p-2 rounded-lg"
-									placeholder="Insira seu código"
-								/>
-							</div>
-						</div>
-					)}
-
 					<div className="flex flex-col gap-4">
 						<div className="flex flex-col gap-1">
 							<label className="text-neutral-700">E-mail</label>
@@ -85,10 +54,11 @@ export default function Login() {
 								className="border border-gray-200 p-2 rounded-lg"
 								type="email"
 								placeholder="Insira seu email"
+								value={form.username}
+								onChange={(e) => setForm({ ...form, username: e.target.value })}
 							/>
 						</div>
 					</div>
-
 					<div className="flex flex-col gap-4">
 						<div className="flex flex-col gap-1">
 							<label className="text-neutral-700">Senha</label>
@@ -96,27 +66,20 @@ export default function Login() {
 								className="border border-gray-200 p-2 rounded-lg"
 								type="password"
 								placeholder="******"
+								value={form.password}
+								onChange={(e) => setForm({ ...form, password: e.target.value })}
 							/>
 						</div>
 					</div>
-
-					{step === 'manager' && (
-						<div className="flex flex-col gap-4">
-							<div className="flex flex-col gap-1">
-								<label className="text-neutral-700">
-									Código de Autenticação
-								</label>
-								<input
-									className="border border-gray-200 p-2 rounded-lg"
-									placeholder="Insira seu código"
-								/>
-							</div>
-						</div>
-					)}
-
 					<div className="flex flex-col md:flex-row gap-1 justify-between w-full text-sm">
 						<label className="flex items-center gap-2">
-							<input type="checkbox" />
+							<input
+								type="checkbox"
+								checked={form.remember}
+								onChange={(e) =>
+									setForm({ ...form, remember: e.target.checked })
+								}
+							/>
 							Lembre de mim
 						</label>
 						<a href="#" className="text-gray-600 font-semibold">
@@ -124,15 +87,14 @@ export default function Login() {
 						</a>
 					</div>
 
-					<button className="mt-4 w-full bg-gray-600 py-2 px-auto rounded-lg text-white transition duration-300 hover:bg-gray-700 cursor-pointer">
-						Entrar
+					<button
+						disabled={loading}
+						className="disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2 justify-center mt-4 w-full bg-gray-600 py-2 px-auto rounded-lg text-white transition duration-300 hover:bg-gray-700 cursor-pointer"
+					>
+						Entrar {loading && <div className="spinner size-4" />}
 					</button>
 				</div>
-
-				<div className="w-full mt-20 pb-8 text-black/50 text-xs">
-					© Vou + Longe {currentYear}
-				</div>
 			</form>
-		</>
+		</div>
 	);
 }
