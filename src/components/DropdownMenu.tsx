@@ -48,8 +48,8 @@ export default function DropdownMenu({ title, items }: any) {
 								onMouseEnter={() => setActiveItemIndex(index)}
 								onMouseLeave={() => setActiveItemIndex(null)}
 							>
-								<Link
-									href={`/anos/${item.id || '#'}`}
+								<a
+									href={`/anos/${item.id}/componentes`}
 									className="px-4 py-2 text-neutral-900 hover:bg-gray-100 items-start w-full flex gap-4"
 								>
 									{item.icon && (
@@ -84,14 +84,16 @@ export default function DropdownMenu({ title, items }: any) {
 											d="m1 1 4 4 4-4"
 										/>
 									</svg>
-								</Link>
+								</a>
 								{item.components && activeItemIndex === index && (
 									<div className="absolute left-full top-0 bg-white shadow-lg rounded-lg w-64 z-20">
 										<ul className="py-2 text-sm text-gray-700">
 											{item.components.map((subItem: any, subIndex: any) => (
 												<li key={subIndex}>
-													<Link
-														href={`/componentes/${subItem.id || '#'}`}
+													<a
+														href={`/anos/${item.id}/componentes?id=${
+															subItem.id || '#'
+														}`}
 														className="px-4 py-2 text-neutral-900 hover:bg-gray-100 items-start w-full flex gap-4"
 													>
 														{subItem.icon && (
@@ -112,7 +114,7 @@ export default function DropdownMenu({ title, items }: any) {
 																{subItem.descricao}
 															</small>
 														</div>
-													</Link>
+													</a>
 												</li>
 											))}
 										</ul>

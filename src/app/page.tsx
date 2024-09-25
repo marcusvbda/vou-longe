@@ -64,7 +64,7 @@ export default function Home() {
 								{contentData.map((item: any, index: any) => (
 									<div key={index} className="w-full md:w-[250px]">
 										<Link
-											href={`/anos/${item.id}`}
+											href={`/anos/${item.id}/componentes`}
 											className="w-full cursor-pointer transition duration-300 hover:bg-gray-100 border border-gray-200 py-4 px-6 rounded-lg flex gap-4 font-semibold text-xl items-center text-neutral-700"
 										>
 											<div className="border border-gray-200 p-4 rounded-lg">

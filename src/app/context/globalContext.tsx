@@ -11,6 +11,7 @@ export const GlobalContextProvider = ({
 }: any): ReactNode => {
 	const [processedYears, setProcessedYears] = useState<any>(null);
 	const [loadingYears, setLoadingYears] = useState(true);
+	const [components, setComponents] = useState<any>([]);
 
 	const carouselSlides = useMemo(
 		() => [
@@ -35,9 +36,11 @@ export const GlobalContextProvider = ({
 				const id = item?.id;
 				const description = item?.acf?.descricao;
 				const icon = item?.acf?.icone;
+				const slug = item?.slug;
 				const title = item?.title?.rendered;
 				if (!years[tipo]) years[tipo] = [];
 				const _components: any = await getPosts('componente');
+				setComponents(_components);
 				const filtered = (_components?.items || []).filter((x: any) => {
 					return (
 						x?.acf?.tipo_do_ano === tipo && (x?.acf?.ano || []).includes(id)
@@ -49,11 +52,13 @@ export const GlobalContextProvider = ({
 					title,
 					description,
 					icon,
+					slug,
 					components: filtered.map((x: any) => ({
-						title: x?.title?.rendered,
+						title: x?.acf?.titulo,
 						descricao: x?.acf?.descricao,
 						id: x?.id,
 						icon: x?.acf?.icone,
+						slug: x?.slug,
 					})),
 				});
 			}
@@ -73,6 +78,7 @@ export const GlobalContextProvider = ({
 				setProcessedYears,
 				loadingYears,
 				carouselSlides,
+				components,
 			}}
 		>
 			{children}
