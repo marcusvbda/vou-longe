@@ -13,8 +13,8 @@ export default function Login() {
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 	const [form, setForm] = useState({
-		username: 'admin@admin.com',
-		password: 'admin',
+		username: process.env.NEXT_PUBLIC_DEFAULT_USERNAME || '',
+		password: process.env.NEXT_PUBLIC_DEFAULT_PASSWORD || '',
 		remember: false,
 	});
 

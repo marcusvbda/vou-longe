@@ -1,21 +1,36 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { findPost, getPosts } from './wordpress';
+import { findPost } from './wordpress';
+import * as crypto from 'crypto';
+import axios from 'axios';
 
-export const login = (form: any) => {
-	if (form.username === 'admin@admin.com' && form.password === 'admin') {
+export const login = async (form: any) => {
+	try {
+		let data = JSON.stringify({
+			login: form.username,
+			senha: form.password,
+			criptografia: 'SHA512',
+		});
+
+		let config = {
+			method: 'post',
+			maxBodyLength: Infinity,
+			url: `${process.env.NEXT_AUTH_API_URL}/Autenticacao/LoginHub`,
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			data: data,
+		};
+
+		const response = await axios.request(config);
+		const result: any = decrypt(response.data?.itemToken);
+		if (!result?.Identificacao) {
+			return { success: false, message: 'Credenciais inválidas' };
+		}
+
 		const token = {
-			Identificacao: [
-				{
-					Uuid: '3dddd484-59e5-42d6-a880-0661ad183b42',
-					Login: '2024499072',
-					Nome: 'Arthur Santos Neto',
-					Ativo: true,
-					Perfis: ['Gestor Secretaria'],
-					DataHoraGeracao: '2024-09-20T16:46:04.1974527-03:00',
-				},
-			],
+			Identificacao: result?.Identificacao,
 		};
 
 		let payload: any = {
@@ -27,11 +42,10 @@ export const login = (form: any) => {
 
 		if (payload.remember) payload.maxAge = 60 * 60 * 24;
 		cookies().set(payload);
-
 		return { success: true, message: 'Login bem-sucedido' };
+	} catch (error) {
+		return { success: false, message: 'Credenciais inválidas' };
 	}
-
-	return { success: false, message: 'Credenciais inválidas' };
 };
 
 export const logout = () => {
@@ -47,4 +61,18 @@ export const getSession = () => {
 export const getSite = async () => {
 	const result = await findPost('site', 'slug', 'vou-mais-longe');
 	return result;
+};
+
+const decrypt = (encryptedText: string) => {
+	const key = process.env.NEXT_AUTH_SECRET || '';
+	const base64Decoded = Buffer.from(encryptedText, 'base64').toString('utf8');
+	const payload = JSON.parse(base64Decoded);
+	const aesKey = Buffer.from(key, 'utf8');
+	const iv = Buffer.from(payload.iv, 'base64');
+	const encryptedValue = Buffer.from(payload.value, 'base64');
+	const decipher = crypto.createDecipheriv('aes-256-cbc', aesKey, iv);
+	decipher.setAutoPadding(true);
+	let decrypted = decipher.update(encryptedValue as any, 'base64', 'utf8');
+	decrypted += decipher.final('utf8');
+	return JSON.parse(Buffer.from(decrypted, 'base64').toString('utf8'));
 };
