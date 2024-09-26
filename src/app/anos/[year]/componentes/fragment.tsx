@@ -1,6 +1,5 @@
 'use client';
 import { GlobalContext } from '@/app/context/globalContext';
-import Carousel from '@/components/carousel';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import { getPosts } from '@/services/wordpress';
@@ -67,21 +66,17 @@ const Content = ({ year }: any) => {
 		<div className="px-8 md:px-20 w-full">
 			<div className="flex w-full md:w-auto">
 				<div className="mt-8 w-full md:w-auto border-t border-b border-gray-300 py-2 flex text-neutral-500 text-sm items-center flex-wrap gap-2">
-					<Link href="/">
+					<Link href="/" className="flex gap-2 items-center">
 						<img src="/assets/images/home.svg" />
+						Página Inicial
 					</Link>
 					<img src="/assets/images/breadcrumb-arrow.svg" className="mx-4" />
 					<div>{year?.title?.rendered || ''}</div>
 					<img src="/assets/images/breadcrumb-arrow.svg" className="mx-4" />
-					<div>{selectedComponent?.acf?.titulo || ''}</div>
-					<img src="/assets/images/breadcrumb-arrow.svg" className="mx-4" />
-					<strong className="font-semibold text-black">Componentes</strong>
+					<strong className="font-semibold text-black">Componente</strong>
 				</div>
 			</div>
-			<div
-				className="w-full flex flex-col items-center mb-20"
-				x-data="contentData"
-			>
+			<div className="w-full flex flex-col items-center mb-20">
 				<h1 className="text-3xl font-semibold text-neutral-700 mt-8 mb-10 text-center">
 					Escolha o componente que deseja visualizar
 				</h1>
