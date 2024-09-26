@@ -8,6 +8,7 @@ import { login, logout } from '@/services/auth';
 import { ThemeContext } from '@/app/context/themeContext';
 
 export default function Login() {
+	const [initialized, setInitialized] = useState(false);
 	const { site } = useContext(ThemeContext);
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
@@ -19,6 +20,7 @@ export default function Login() {
 
 	useEffect(() => {
 		logout();
+		setInitialized(true);
 	}, []);
 
 	const onSubmitHandler = async (e: any) => {
@@ -36,6 +38,8 @@ export default function Login() {
 		}
 		router.push('/');
 	};
+
+	if (!initialized) return <></>;
 
 	return (
 		<div className="bg-white p-6 flex item-center justify-center rounded-xl flex-col mt-10">
@@ -58,7 +62,6 @@ export default function Login() {
 							</label>
 							<input
 								className="border border-gray-200 p-2 rounded-lg"
-								type="email"
 								placeholder={site?.acf?.placeholder_input_email_login || ''}
 								value={form.username}
 								onChange={(e) => setForm({ ...form, username: e.target.value })}

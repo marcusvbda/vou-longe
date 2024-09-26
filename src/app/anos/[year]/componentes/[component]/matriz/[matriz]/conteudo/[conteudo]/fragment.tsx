@@ -9,6 +9,13 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 
 export default function Fragment({ year, component, matriz, content }: any) {
 	const { loadingYears } = useContext(GlobalContext);
+	const [initialized, setInitialized] = useState(false);
+
+	useEffect(() => {
+		setInitialized(true);
+	}, []);
+
+	if (!initialized) return <> </>;
 
 	return (
 		<>
