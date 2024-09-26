@@ -54,7 +54,7 @@ export default function Home() {
 						<>
 							<div className="w-full bg-white py-20 flex items-center gap-2 justify-between flex-col md:flex-row">
 								<h1 className="text-3xl font-semibold text-neutral-700">
-									{site?.acf?.texto_de_orientacao_home || ''}
+									Escolha o ano escolar
 								</h1>
 								<div className="flex gap-2">
 									{keys.map((key) => (

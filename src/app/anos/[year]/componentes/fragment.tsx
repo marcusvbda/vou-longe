@@ -40,7 +40,6 @@ export default function Fragment({ year }: any) {
 }
 
 const Content = ({ year }: any) => {
-	const { site } = useContext(ThemeContext);
 	const searchParams = useSearchParams();
 	const selectedId = parseInt(searchParams.get('id') as any);
 	const { components } = useContext(GlobalContext);
@@ -87,7 +86,7 @@ const Content = ({ year }: any) => {
 			</div>
 			<div className="w-full flex flex-col items-center mb-20">
 				<h1 className="text-3xl font-semibold text-neutral-700 mt-8 mb-10 text-center">
-					{site?.acf?.texto_de_orientacao_componentes || ''}
+					Escolha o componente que deseja visualizar
 				</h1>
 				<div className="w-full flex flex-col md:flex-row gap-4">
 					<div className="w-full md:w-3/12 flex flex-row md:flex-col gap-4 md:gap-2 flex-wrap justify-center md:justify-start">
