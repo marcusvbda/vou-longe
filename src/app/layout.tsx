@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: any) {
 	const [session, site] = await Promise.all([getSession(), getSite()]);
+
 	return (
 		<html lang="pt-BR" className="h-fill">
 			<body suppressHydrationWarning className={inter.className}>

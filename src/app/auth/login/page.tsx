@@ -1,12 +1,14 @@
 'use client';
 
 import AspectRatio from '@/components/aspectRatio';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { useRouter } from 'next/navigation';
 import { login, logout } from '@/services/auth';
+import { ThemeContext } from '@/app/context/themeContext';
 
 export default function Login() {
+	const { site } = useContext(ThemeContext);
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 	const [form, setForm] = useState({
@@ -38,22 +40,26 @@ export default function Login() {
 	return (
 		<div className="bg-white p-6 flex item-center justify-center rounded-xl flex-col mt-10">
 			<div className="bg-gray-100 rounded-xl max-w-[362px] py-8 px-10 flex items-center justify-center self-center relative -top-12">
-				<AspectRatio src="/assets/images/logo-gray.svg" size={{ height: 48 }} />{' '}
+				<AspectRatio src={site?.acf?.logo_login} size={{ height: 48 }} />
 			</div>
 
 			<form onSubmit={(e: any) => onSubmitHandler(e)}>
-				<h1 className="text-3xl text-black font-semibold mb-4">Login</h1>
+				<h1 className="text-3xl text-black font-semibold mb-4">
+					{site?.acf?.titulo_do_login_login || ''}
+				</h1>
 				<small className="text-gray-600">
-					Bem vindo de volta! Por favor, insira seus dados abaixo.
+					{site?.acf?.descricao_do_login_login || ''}
 				</small>
 				<div className="flex flex-col gap-6 mt-10">
 					<div className="flex flex-col gap-4">
 						<div className="flex flex-col gap-1">
-							<label className="text-neutral-700">E-mail</label>
+							<label className="text-neutral-700">
+								{site?.acf?.label_input_email_login || ''}
+							</label>
 							<input
 								className="border border-gray-200 p-2 rounded-lg"
 								type="email"
-								placeholder="Insira seu email"
+								placeholder={site?.acf?.placeholder_input_email_login || ''}
 								value={form.username}
 								onChange={(e) => setForm({ ...form, username: e.target.value })}
 							/>
@@ -61,11 +67,13 @@ export default function Login() {
 					</div>
 					<div className="flex flex-col gap-4">
 						<div className="flex flex-col gap-1">
-							<label className="text-neutral-700">Senha</label>
+							<label className="text-neutral-700">
+								{site?.acf?.label_senha_login || ''}
+							</label>
 							<input
 								className="border border-gray-200 p-2 rounded-lg"
 								type="password"
-								placeholder="******"
+								placeholder={site?.acf?.placeholder_input_senha_login || ''}
 								value={form.password}
 								onChange={(e) => setForm({ ...form, password: e.target.value })}
 							/>
@@ -80,18 +88,19 @@ export default function Login() {
 									setForm({ ...form, remember: e.target.checked })
 								}
 							/>
-							Lembre de mim
+							{site?.acf?.lembrar_texto_login || ''}
 						</label>
-						<a href="#" className="text-gray-600 font-semibold">
+						{/* <a href="#" className="text-gray-600 font-semibold">
 							Esqueci minha senha
-						</a>
+						</a> */}
 					</div>
 
 					<button
 						disabled={loading}
 						className="disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2 justify-center mt-4 w-full bg-gray-600 py-2 px-auto rounded-lg text-white transition duration-300 hover:bg-gray-700 cursor-pointer"
 					>
-						Entrar {loading && <div className="spinner size-4" />}
+						{site?.acf?.texto_botao_entrar_login || ''}
+						{loading && <div className="spinner size-4" />}
 					</button>
 				</div>
 			</form>

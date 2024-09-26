@@ -1,7 +1,8 @@
 'use client';
 
 import { getPosts } from '@/services/wordpress';
-import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
+import { ThemeContext } from './themeContext';
 
 export const GlobalContext = createContext<any>({});
 
@@ -12,19 +13,6 @@ export const GlobalContextProvider = ({
 	const [processedYears, setProcessedYears] = useState<any>(null);
 	const [loadingYears, setLoadingYears] = useState(true);
 	const [components, setComponents] = useState<any>([]);
-
-	const carouselSlides = useMemo(
-		() => [
-			{
-				title: 'Conheça o livro de conteúdos de Língua Portuguesa',
-				description:
-					'Conteúdos completos e interativos para ajudar no desenvolvimento da leitura e escrita.',
-			},
-			{ title: 'Outro título', description: 'Outra descrição.' },
-			{ title: 'Mais um título', description: 'Mais uma descrição.' },
-		],
-		[]
-	);
 
 	useEffect(() => {
 		const processYears = async () => {
@@ -77,7 +65,6 @@ export const GlobalContextProvider = ({
 				processedYears,
 				setProcessedYears,
 				loadingYears,
-				carouselSlides,
 				components,
 			}}
 		>

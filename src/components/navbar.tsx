@@ -5,8 +5,10 @@ import AspectRatio from './aspectRatio';
 import DropdownMenu from './DropdownMenu';
 import { useContext, useMemo } from 'react';
 import { GlobalContext } from '@/app/context/globalContext';
+import { ThemeContext } from '@/app/context/themeContext';
 
 export default function Navbar() {
+	const { site } = useContext(ThemeContext);
 	const { session, processedYears, loadingYears } = useContext(GlobalContext);
 
 	const firstName = useMemo(() => {
@@ -21,7 +23,7 @@ export default function Navbar() {
 				className="pb-6 cursor-pointer hover:opacity-70 transition duration-300"
 			>
 				<AspectRatio
-					src="/assets/images/logo-gray.svg"
+					src={site?.acf?.logo_navbar || ''}
 					alt="Logo"
 					size={{ width: 212 }}
 				/>

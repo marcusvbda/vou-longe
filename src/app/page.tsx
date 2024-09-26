@@ -6,10 +6,23 @@ import Navbar from '@/components/navbar';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { GlobalContext } from './context/globalContext';
 import Link from 'next/link';
+import { ThemeContext } from './context/themeContext';
 
 export default function Home() {
-	const { processedYears, loadingYears, carouselSlides } =
-		useContext(GlobalContext);
+	const { site } = useContext(ThemeContext);
+	const slides = useMemo(() => {
+		const items = (site?.acf?.items_do_carrossel || '')
+			.split('\r\n')
+			.map((item: any) => item.split('|'));
+		return items.map((item: any) => {
+			return {
+				title: item[0],
+				description: item[1],
+			};
+		});
+	}, []);
+
+	const { processedYears, loadingYears } = useContext(GlobalContext);
 	const [type, setType] = useState(null);
 
 	const keys: any[] = useMemo(() => {
@@ -30,7 +43,7 @@ export default function Home() {
 			<div className="p-2 md:py-6 md:px-8">
 				<div className="w-full bg-gray-300 rounded-2xl flex flex-col p-4 items-center">
 					<Navbar />
-					<Carousel slides={carouselSlides} />
+					<Carousel slides={slides} />
 				</div>
 				<div className="w-full flex flex-col items-center mb-20">
 					{loadingYears ? (
