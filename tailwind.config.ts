@@ -13,6 +13,7 @@ const config: Config = {
 				primary: 'rgba(232, 100, 83, 1)',
 				muted: 'rgba(170, 162, 161, 1)',
 				'primary-700': 'rgba(139, 60, 50, 1)',
+				tertiary: 'rgba(122, 114, 113, 1)',
 			},
 		},
 	},
