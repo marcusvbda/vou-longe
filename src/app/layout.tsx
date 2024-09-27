@@ -15,7 +15,7 @@ export default async function RootLayout({ children }: any) {
 	const [session, site] = await Promise.all([getSession(), getSite()]);
 
 	return (
-		<html lang="pt-BR" className="h-fill">
+		<html lang="pt-BR">
 			<body suppressHydrationWarning className={inter.className}>
 				<ThemeContextProvider site={site}>
 					<GlobalContextProvider session={session}>

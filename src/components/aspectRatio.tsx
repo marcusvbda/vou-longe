@@ -13,7 +13,7 @@ interface IProps {
   };
 }
 
-const AspectRatio: React.FC<IProps> = ({ src, alt, size, className }) => {
+const AspectRatio: React.FC<IProps> = ({ src = "", alt, size, className }) => {
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
   const processedAlt = alt || (src.split("/").pop() as string).split(".")[0];
 

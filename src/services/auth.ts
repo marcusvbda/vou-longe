@@ -28,7 +28,6 @@ export const login = async (form: any) => {
 		if (!result?.Identificacao) {
 			return { success: false, message: 'Credenciais inválidas' };
 		}
-
 		const token = {
 			Identificacao: result?.Identificacao,
 		};
@@ -59,7 +58,11 @@ export const getSession = () => {
 };
 
 export const getSite = async () => {
-	const result = await findPost('site', 'slug', 'vou-mais-longe');
+	const result = await findPost(
+		'configuracao-de-site',
+		'slug',
+		'vou-mais-longe'
+	);
 	return result;
 };
 

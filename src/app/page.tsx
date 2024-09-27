@@ -1,51 +1,27 @@
 'use client';
-import AspectRatio from '@/components/aspectRatio';
 import Carousel from '@/components/carousel';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
-import { useContext, useEffect, useMemo, useState } from 'react';
 import { GlobalContext } from './context/globalContext';
-import Link from 'next/link';
+import { useContext, useEffect, useState } from 'react';
+import { getPosts } from '@/services/wordpress';
 import { ThemeContext } from './context/themeContext';
+import Link from 'next/link';
 
 export default function Home() {
-	const { site } = useContext(ThemeContext);
-	const slides = useMemo(() => {
-		const items = (site?.acf?.items_do_carrossel || '')
-			.split('\r\n')
-			.map((item: any) => item.split('|'));
-		return items.map((item: any) => {
-			return {
-				title: item[0],
-				description: item[1],
-			};
-		});
-	}, []);
-
-	const { processedYears, loadingYears } = useContext(GlobalContext);
-	const [type, setType] = useState(null);
-
-	const keys: any[] = useMemo(() => {
-		if (!processedYears) return [];
-		return Object.keys(processedYears);
-	}, [processedYears]);
-
-	useEffect(() => {
-		setType(keys[0]);
-	}, [keys]);
-
-	const contentData: any = useMemo(() => {
-		return processedYears?.[type || ''] || [];
-	}, [type]);
+	const { perfil } = useContext(GlobalContext);
 
 	return (
 		<>
 			<div className="p-2 md:py-6 md:px-8">
-				<div className="w-full bg-gray-300 rounded-2xl flex flex-col p-4 items-center">
+				<div className="w-full flex flex-col p-4 items-center">
 					<Navbar />
-					<Carousel slides={slides} />
+					<Carousel />
 				</div>
-				<div className="w-full flex flex-col items-center mb-20">
+				<div className="w-full flex relative -top-24 flex-col">
+					{perfil === 'gestor' && <GestorContent />}
+				</div>
+				{/* <div className="w-full flex flex-col items-center mb-20">
 					{loadingYears ? (
 						<div className="w-full flex py-24 items-center justify-center">
 							<div className="spinner size-14" />
@@ -94,9 +70,92 @@ export default function Home() {
 							</div>
 						</>
 					)}
-				</div>
+				</div> */}
 			</div>
 			<Footer />
 		</>
 	);
 }
+
+const GestorContent = () => {
+	const { site } = useContext(ThemeContext);
+	const [loadingMenu, setLoadingMenu] = useState(true);
+	const [selected, setSeleted] = useState(0);
+	const [menus, setMenus] = useState<any>([]);
+
+	useEffect(() => {
+		const getMenus = async () => {
+			setLoadingMenu(true);
+			const typeMenus: any = await getPosts('menu');
+			const filtered = (typeMenus?.items || [])
+				.filter((x: any) => x?.acf?.perfil === 'gestor')
+				.map((x: any) => {
+					return {
+						items: (x?.acf?.itens || '')
+							.split('\r\n')
+							.map((item: any) => item.split('|')),
+						title: x?.acf?.titulo || '',
+					};
+				});
+			setMenus(filtered);
+			setLoadingMenu(false);
+		};
+		getMenus();
+	}, []);
+
+	return (
+		<div className="w-full flex flex-col items-center">
+			{loadingMenu ? (
+				<div className="w-full flex py-24 items-center justify-center">
+					<div className="spinner size-14" />
+				</div>
+			) : (
+				<>
+					<div className="w-full bg-white flex items-center gap-2 justify-between flex-col">
+						<div className="flex w-full gap-2 justify-center mb-10">
+							{menus.map((menu: any, key: any) => (
+								<button
+									key={key}
+									onClick={() => setSeleted(key)}
+									className={`btn px-4 py-2 rounded-full ${
+										selected === key
+											? 'bg-secondary text-white'
+											: 'text-secondary'
+									}`}
+								>
+									{menu.title}
+								</button>
+							))}
+						</div>
+						<div
+							className="w-full flex gap-8 wrap justify-center items-center"
+							style={{ flexWrap: 'wrap' }}
+						>
+							{menus[selected].items.map((item: any, index: any) => (
+								<Link
+									href={item[2]}
+									key={index}
+									className="w-full md:w-[340px] h-[240px] flex"
+									style={{ maxWidth: '340px' }}
+								>
+									<div
+										className="border border-gray-100 rounded-2xl p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
+										style={{
+											backgroundImage: `url(${
+												site?.acf?.background_card || ''
+											})`,
+											backgroundSize: 'cover',
+											backgroundRepeat: 'no-repeat',
+										}}
+									>
+										{item[0]}
+									</div>
+								</Link>
+							))}
+						</div>
+					</div>
+				</>
+			)}
+		</div>
+	);
+};
