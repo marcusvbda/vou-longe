@@ -6,13 +6,13 @@ import { ThemeContext } from '@/app/context/themeContext';
 
 export default function Carousel() {
 	const { site } = useContext(ThemeContext);
-	const [slides, setSlides] = useState(
+	const [slides] = useState(
 		(site?.acf?.itens_carousel_home || '').split('\r\n')
 	);
 	const [currentSlide, setCurrentSlide] = useState(0);
 
 	return (
-		<div className="relative w-full h-[634px] mb-8 top-[-130px]">
+		<div className="hidden md:relative w-full h-[634px] mb-8 top-[-130px]">
 			<div className="overflow-hidde h-full n w-full">
 				<div
 					className="flex h-full transition-transform duration-500 ease-in-out"
@@ -24,7 +24,7 @@ export default function Carousel() {
 							className="w-full h-full flex-shrink-0 px-4 rounded-[50px]"
 							style={{
 								backgroundImage: `url(${slide})`,
-								backgroundSize: 'cover',
+								backgroundSize: 'contain',
 								backgroundRepeat: 'no-repeat',
 							}}
 						>

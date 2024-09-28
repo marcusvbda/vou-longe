@@ -11,9 +11,8 @@ export default function Fragment({ options, year }: any) {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const initialArea = searchParams.get('area') || '';
-	const [selected, setSelected] = useState(
-		options.findIndex((x: any) => x.title == initialArea) || 0
-	);
+	const index = options.findIndex((x: any) => x.title == initialArea);
+	const [selected, setSelected] = useState(index >= 0 ? index : 0);
 	const { site } = useContext(ThemeContext);
 
 	useEffect(() => {

@@ -59,7 +59,7 @@ export default function Navbar() {
 		<div className="bg-white px-6 py-4 rounded-2xl shadow-md w-full md:w-8/12 flex flex-col md:flex-row items-center gap-4 border border-gray-100 z-10">
 			<Link
 				href="/"
-				className="pb-6 cursor-pointer hover:opacity-70 transition duration-300"
+				className="pb-0 md:pb-6 cursor-pointer hover:opacity-70 transition duration-300"
 			>
 				<AspectRatio
 					src={site?.acf?.logo_navbar || ''}
@@ -67,7 +67,7 @@ export default function Navbar() {
 					size={{ width: 212 }}
 				/>
 			</Link>
-			<div className="flex items-center gap-4 flex-1">
+			<div className="flex items-center gap-4 flex-1 flex-col md:flex-row">
 				<div
 					className="flex items-center justify-center gap-2"
 					style={{ margin: '0 auto' }}
