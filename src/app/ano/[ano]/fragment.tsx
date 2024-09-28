@@ -53,18 +53,18 @@ export default function Fragment({ options, year }: any) {
 									))}
 								</div>
 								<div
-									className="w-full flex gap-8 wrap justify-center items-center"
+									className="w-full flex gap-8 wrap"
 									style={{ flexWrap: 'wrap' }}
 								>
 									{options[selected].items.map((item: any, index: any) => (
 										<Link
-											href={`/ano/${year}/${item[1]}`}
+											href={`/ano/${year}/matriz/${item[1]}`}
 											key={index}
-											className="w-full md:w-[340px] h-[240px] flex"
+											className="w-full md:w-[340px] h-[240px] flex p-4  border border-gray-100 rounded-2xl"
 											style={{ maxWidth: '340px' }}
 										>
 											<div
-												className="border border-gray-100 rounded-2xl p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
+												className="rounded-2xl p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
 												style={{
 													backgroundImage: `url(${
 														site?.acf?.background_card_secundario || ''
