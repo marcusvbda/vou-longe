@@ -20,7 +20,9 @@ export default function Navbar() {
 			const typeMenus: any = await getPosts('menu');
 			const filtered = (typeMenus?.items || [])
 				.filter((x: any) => {
-					if (perfil === 'gestor') return x?.acf?.perfil === perfil;
+					if (['gestor', 'professor'].includes(perfil)) {
+						return x?.acf?.perfil === perfil;
+					}
 					if (perfil === 'aluno') {
 						return (
 							x?.acf?.perfil === perfil &&
@@ -38,6 +40,8 @@ export default function Navbar() {
 							.split('\r\n')
 							.map((item: any) => item.split('|')),
 						title: x?.acf?.titulo || '',
+						tipo: x?.acf?.tipo || '',
+						url: x?.acf?.url || '',
 					};
 				});
 			setMenus(filtered);
@@ -72,9 +76,27 @@ export default function Navbar() {
 						<div className="spinner size-10" />
 					) : (
 						<>
-							{menus.map((menu: any, key: number) => (
-								<DropdownMenu key={key} title={menu.title} items={menu.items} />
-							))}
+							{menus
+								.filter((x: any) => x.tipo === 'menu')
+								.map((menu: any, key: number) => (
+									<DropdownMenu
+										key={key}
+										title={menu.title}
+										items={menu.items}
+										menu={menu}
+									/>
+								))}
+							{menus
+								.filter((x: any) => x.tipo === 'link')
+								.map((menu: any, key: number) => (
+									<Link
+										key={key}
+										href={menu.url}
+										className="flex gap-1 items-center text-primary font-semibold cursor-pointer"
+									>
+										{menu.title}
+									</Link>
+								))}
 						</>
 					)}
 				</div>

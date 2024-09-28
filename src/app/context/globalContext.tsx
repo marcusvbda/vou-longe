@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, createContext, useMemo, useState } from 'react';
+import { ReactNode, createContext, useMemo } from 'react';
 
 export const GlobalContext = createContext<any>({});
 
@@ -7,22 +7,28 @@ export const GlobalContextProvider = ({
 	children,
 	session,
 }: any): ReactNode => {
-	const [loadingYears, setLoadingYears] = useState(true);
-	const [components, setComponents] = useState<any>([]);
-
 	const perfil = useMemo(() => {
 		const original = (
 			session?.Identificacao?.[0]?.Perfis?.[0] || ''
 		).toLowerCase();
-		// if (['super administrador'].includes(original)) {
-		// 	return 'gestor';
-		// }
+
+		if (['super administrador'].includes(original)) {
+			return 'gestor';
+		}
+
+		if (['aluno'].includes(original)) {
+			return 'aluno';
+		}
+
+		if (['professor'].includes(original)) {
+			return 'professor';
+		}
 
 		return 'aluno';
 	}, [session]);
 
 	const anoDoAluno = useMemo(() => {
-		return 1;
+		return session?.Identificacao?.[0]?.Ano;
 	}, [session]);
 
 	return (
@@ -30,8 +36,6 @@ export const GlobalContextProvider = ({
 			value={{
 				session,
 				perfil,
-				loadingYears,
-				components,
 				anoDoAluno,
 			}}
 		>

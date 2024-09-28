@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 export default function DropdownMenu({ title, items }: any) {
 	const [open, setOpen] = useState(false);
-	const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
 
 	return (
 		<div
@@ -13,7 +12,6 @@ export default function DropdownMenu({ title, items }: any) {
 			onMouseEnter={() => setOpen(true)}
 			onMouseLeave={() => {
 				setOpen(false);
-				setActiveItemIndex(null); // Fecha o submenu ao sair
 			}}
 		>
 			<button
@@ -42,12 +40,7 @@ export default function DropdownMenu({ title, items }: any) {
 				<div className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-80">
 					<ul className="py-2 text-sm text-gray-700">
 						{items.map((item: any, index: any) => (
-							<li
-								key={index}
-								className="relative"
-								onMouseEnter={() => setActiveItemIndex(index)}
-								onMouseLeave={() => setActiveItemIndex(null)}
-							>
+							<li key={index} className="relative">
 								<a
 									href={item[2]}
 									className="px-4 py-2 text-neutral-900 hover:bg-gray-100 items-start w-full flex gap-4"
