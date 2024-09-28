@@ -12,8 +12,8 @@ export default function Carousel() {
 	const [currentSlide, setCurrentSlide] = useState(0);
 
 	return (
-		<div className="hidden md:relative w-full h-[634px] mb-8 top-[-130px]">
-			<div className="overflow-hidde h-full n w-full">
+		<div className="relative w-full h-[634px] mb-8 top-[-130px]">
+			<div className="overflow-hidden h-full n w-full">
 				<div
 					className="flex h-full transition-transform duration-500 ease-in-out"
 					style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -24,7 +24,7 @@ export default function Carousel() {
 							className="w-full h-full flex-shrink-0 px-4 rounded-[50px]"
 							style={{
 								backgroundImage: `url(${slide})`,
-								backgroundSize: 'contain',
+								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 							}}
 						>
