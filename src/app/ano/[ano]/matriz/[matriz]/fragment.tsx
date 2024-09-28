@@ -7,10 +7,8 @@ import Link from 'next/link';
 import { useContext, useState } from 'react';
 
 export default function Fragment({ options, year, matriz }: any) {
-	const [selected, setSelected] = useState(0);
-	const [types, setTypes] = useState(options.map((x: any) => x?.acf?.tipo));
+	const [types] = useState(options.map((x: any) => x?.acf?.tipo));
 	const [type, setType] = useState(types[0]);
-	const { site } = useContext(ThemeContext);
 
 	return (
 		<>
@@ -65,6 +63,42 @@ export default function Fragment({ options, year, matriz }: any) {
 											{item}
 										</button>
 									))}
+									<div className="flex flex-row gap-4 items-center">
+										<Link
+											href={`/ano/${year}}`}
+											className="cursor-pointer bg-primary text-white px-6 py-2 rounded-lg items-center justify-center flex gap-2"
+										>
+											<svg
+												width="32"
+												height="32"
+												viewBox="0 0 32 32"
+												fill="none"
+											>
+												<path
+													d="M6.66699 15.9997H25.3337"
+													stroke="white"
+													strokeWidth="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+												/>
+												<path
+													d="M13.3337 9.33301L6.66699 15.9997"
+													stroke="white"
+													strokeWidth="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+												/>
+												<path
+													d="M13.3337 22.6662L6.66699 15.9995"
+													stroke="white"
+													strokeWidth="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+												/>
+											</svg>
+											Voltar
+										</Link>
+									</div>
 								</div>
 								<div
 									className="w-full flex gap-8 wrap"
@@ -90,7 +124,9 @@ export default function Fragment({ options, year, matriz }: any) {
 													}}
 												/>
 												<div className="text-primary font-semibold gap-2 flex w-full mt-2">
-													{item?.acf?.conteudo.split('|')[0]}
+													<div className="w-full truncate">
+														{item?.acf?.conteudo.split('|')[0]}
+													</div>
 													<svg
 														className="ml-auto"
 														width="28"

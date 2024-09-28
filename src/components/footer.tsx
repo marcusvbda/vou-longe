@@ -1,6 +1,7 @@
 'use client';
 
 import { ThemeContext } from '@/app/context/themeContext';
+import Link from 'next/link';
 import { useContext, useMemo } from 'react';
 
 export default function Footer() {
@@ -41,13 +42,13 @@ export default function Footer() {
 					))}
 				</div>
 				<div className="flex flex-row gap-4 items-center">
-					<a
+					<Link
 						href={linkQuero?.[1] || '#'}
 						target="_blank"
-						className="cursor-pointer bg-primary text-white px-6 py-4 rounded-md text-lg"
+						className="cursor-pointer bg-primary text-white px-6 py-4 rounded-lg text-lg"
 					>
 						{linkQuero[0]}
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="bg-gray-100">
