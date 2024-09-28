@@ -10,6 +10,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				secondary: 'rgb(135, 103, 170,1)',
+				'secondary-500': 'rgba(135, 103, 170, 1)',
 				primary: 'rgba(232, 100, 83, 1)',
 				muted: 'rgba(170, 162, 161, 1)',
 				'primary-700': 'rgba(139, 60, 50, 1)',

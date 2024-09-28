@@ -20,57 +20,8 @@ export default function Home() {
 				</div>
 				<div className="w-full flex relative -top-24 flex-col">
 					{perfil === 'gestor' && <GestorContent />}
+					{perfil === 'aluno' && <AlunoContent />}
 				</div>
-				{/* <div className="w-full flex flex-col items-center mb-20">
-					{loadingYears ? (
-						<div className="w-full flex py-24 items-center justify-center">
-							<div className="spinner size-14" />
-						</div>
-					) : (
-						<>
-							<div className="w-full bg-white py-20 flex items-center gap-2 justify-between flex-col md:flex-row">
-								<h1 className="text-3xl font-semibold text-neutral-700">
-									Escolha o ano escolar
-								</h1>
-								<div className="flex gap-2">
-									{keys.map((key) => (
-										<button
-											key={key}
-											onClick={() => setType(key)}
-											className={`btn px-4 py-2 rounded-full ${
-												type === key
-													? 'bg-gray-600 text-white'
-													: 'text-gray-600'
-											}`}
-										>
-											{key}
-										</button>
-									))}
-								</div>
-							</div>
-
-							<div className="w-full md:w-8/12 flex flex-wrap gap-8 justify-center">
-								{contentData.map((item: any, index: any) => (
-									<div key={index} className="w-full md:w-[250px]">
-										<Link
-											href={`/anos/${item.id}/componentes`}
-											className="w-full cursor-pointer transition duration-300 hover:bg-gray-100 border border-gray-200 py-4 px-6 rounded-lg flex gap-4 font-semibold text-xl items-center text-neutral-700"
-										>
-											<div className="border border-gray-200 p-4 rounded-lg">
-												<AspectRatio
-													src={item.icon}
-													alt={item.title}
-													size={{ width: 32 }}
-												/>
-											</div>
-											<span>{item.title}</span>
-										</Link>
-									</div>
-								))}
-							</div>
-						</>
-					)}
-				</div> */}
 			</div>
 			<Footer />
 		</>
@@ -142,7 +93,7 @@ const GestorContent = () => {
 										className="p-4 w-full text-white  rounded-2xl text-center flex font-semibold items-center justify-center text-3xl"
 										style={{
 											backgroundImage: `url(${
-												site?.acf?.background_card || ''
+												item?.acf?.imagem_de_fundo || site?.acf?.background_card
 											})`,
 											backgroundSize: 'cover',
 											backgroundRepeat: 'no-repeat',
@@ -153,6 +104,69 @@ const GestorContent = () => {
 								</Link>
 							))}
 						</div>
+					</div>
+				</>
+			)}
+		</div>
+	);
+};
+
+const AlunoContent = () => {
+	const { anoDoAluno } = useContext(GlobalContext);
+	const { site } = useContext(ThemeContext);
+	const [loadingMenu, setLoadingMenu] = useState(true);
+	const [selected, setSeleted] = useState(0);
+	const [areas, setAreas] = useState<any>([]);
+
+	useEffect(() => {
+		const getAreas = async () => {
+			setLoadingMenu(true);
+			const areas: any = await getPosts('area-de-conhecimento');
+			const filtered = (areas?.items || []).filter((x: any) =>
+				(x?.acf?.anos_que_possuem_acesso || '')
+					.split(',')
+					.map(parseInt)
+					.includes(anoDoAluno)
+			);
+			setAreas(filtered);
+			setLoadingMenu(false);
+		};
+		getAreas();
+	}, []);
+
+	return (
+		<div className="w-full flex flex-col items-center">
+			{loadingMenu ? (
+				<div className="w-full flex py-24 items-center justify-center">
+					<div className="spinner size-14" />
+				</div>
+			) : (
+				<>
+					<div
+						className="w-full flex gap-8 wrap justify-center items-center"
+						style={{ flexWrap: 'wrap' }}
+					>
+						{areas.map((item: any, index: any) => (
+							<Link
+								href={`/ano/${anoDoAluno}?area=${item?.acf?.nome_da_area}`}
+								key={index}
+								className="w-full md:w-[340px] h-[240px] flex p-4 border border-gray-100 rounded-2xl"
+								style={{ maxWidth: '340px' }}
+							>
+								<div
+									className="p-4 w-full text-white  rounded-2xl text-center flex font-semibold items-center justify-center text-3xl"
+									style={{
+										backgroundImage: `url(${
+											item?.acf?.imagem_de_fundo || site?.acf?.background_card
+										})`,
+										backgroundSize: 'cover',
+										backgroundRepeat: 'no-repeat',
+									}}
+								>
+									{item?.acf?.nome_da_area}
+								</div>
+							</Link>
+						))}
 					</div>
 				</>
 			)}

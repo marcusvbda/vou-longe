@@ -10,7 +10,7 @@ import DropdownMenu from './DropdownMenu';
 
 export default function Navbar() {
 	const { site } = useContext(ThemeContext);
-	const { perfil, session } = useContext(GlobalContext);
+	const { perfil, session, anoDoAluno } = useContext(GlobalContext);
 	const [loadingMenu, setLoadingMenu] = useState(true);
 	const [menus, setMenus] = useState<any>([]);
 
@@ -19,7 +19,19 @@ export default function Navbar() {
 			setLoadingMenu(true);
 			const typeMenus: any = await getPosts('menu');
 			const filtered = (typeMenus?.items || [])
-				.filter((x: any) => x?.acf?.perfil === perfil)
+				.filter((x: any) => {
+					if (perfil === 'gestor') return x?.acf?.perfil === perfil;
+					if (perfil === 'aluno') {
+						return (
+							x?.acf?.perfil === perfil &&
+							(x?.acf?.anos || '')
+								.split(',')
+								.map(parseInt)
+								.includes(parseInt(anoDoAluno))
+						);
+					}
+					return true;
+				})
 				.map((x: any) => {
 					return {
 						items: (x?.acf?.itens || '')
@@ -69,8 +81,13 @@ export default function Navbar() {
 				<div className="flex gap-2 items-center cursor-pointer">
 					<div className="h-12 w-12 bg-gray-400 rounded-full flex"></div>
 					<div className="flex flex-col gap-0">
-						<div className="font-concert-one text-primary">
+						<div className="font-concert-one text-primary flex items-center gap-2">
 							Olá, <strong className="font-semibold">{firstName}!</strong>
+							{perfil === 'aluno' && (
+								<div className="text-xs text-secondary-500 border border-secondary-500 rounded-xl px-2 py-1">
+									{anoDoAluno}º Ano
+								</div>
+							)}
 						</div>
 						<Link href="/auth/login" className="text-muted text-xs">
 							Sair da conta

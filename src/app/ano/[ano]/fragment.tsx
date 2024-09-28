@@ -4,11 +4,24 @@ import { ThemeContext } from '@/app/context/themeContext';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
-import { useContext, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useContext, useEffect, useState } from 'react';
 
 export default function Fragment({ options, year }: any) {
-	const [selected, setSelected] = useState(0);
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const initialArea = searchParams.get('area') || '';
+	const [selected, setSelected] = useState(
+		options.findIndex((x: any) => x.title == initialArea) || 0
+	);
 	const { site } = useContext(ThemeContext);
+
+	useEffect(() => {
+		const newParams = new URLSearchParams(searchParams.toString());
+		newParams.set('area', options[selected]?.title);
+		router.push(`?${newParams.toString()}`);
+	}, [selected]);
+
 	return (
 		<>
 			<div className="p-2 md:py-6 md:px-8">
