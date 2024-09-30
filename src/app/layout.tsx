@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: any) {
 	const [session, site] = await Promise.all([getSession(), getSite()]);
-	//console.log(site);
 
 	return (
 		<html lang="pt-BR">

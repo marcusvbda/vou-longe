@@ -7,7 +7,9 @@ import { ThemeContext } from '@/app/context/themeContext';
 export default function Carousel() {
 	const { site } = useContext(ThemeContext);
 	const [slides] = useState(
-		(site?.acf?.itens_carousel_home || '').split('\r\n')
+		(site?.acf?.itens_carousel_home || '')
+			.split('\r\n')
+			.map((item: any) => item.split('|'))
 	);
 	const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -23,7 +25,7 @@ export default function Carousel() {
 							key={index}
 							className="w-full h-full flex-shrink-0 px-4 rounded-[50px]"
 							style={{
-								backgroundImage: `url(${slide})`,
+								backgroundImage: `url(${slide[0]})`,
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 							}}
@@ -42,6 +44,22 @@ export default function Carousel() {
 										size={{ width: 50 }}
 									/>
 								</button>
+								<div className="w-full flex px-20">
+									<div className="w-full md:w-5/12 flex flex-col">
+										{slide[1] && (
+											<h1
+												className="text-6xl font-semibold mt-10 md:mt-0"
+												dangerouslySetInnerHTML={{ __html: slide[1] }}
+											/>
+										)}
+										{slide[2] && (
+											<div
+												className="mt-4"
+												dangerouslySetInnerHTML={{ __html: slide[2] }}
+											/>
+										)}
+									</div>
+								</div>
 								<button
 									onClick={() =>
 										setCurrentSlide(
@@ -65,10 +83,10 @@ export default function Carousel() {
 									<button
 										key={index}
 										onClick={() => setCurrentSlide(index)}
-										className={`cursor-pointer h-4 ${
+										className={`cursor-pointer bg-white h-4 ${
 											currentSlide === index
-												? 'bg-gray-500 w-8 rounded-lg'
-												: 'bg-gray-400 rounded-md w-4'
+												? 'w-8 rounded-lg'
+												: 'rounded-md w-4'
 										}`}
 									/>
 								))}

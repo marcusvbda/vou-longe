@@ -53,8 +53,7 @@ export default function Footer() {
 			</div>
 			<div className="bg-gray-100">
 				<div className="text-primary-700 text-center text-xs py-2 px-4 w-full">
-					©Aprende Brasil Educação, uma empresa do Grupo Positivo. Todos os
-					direitos reservados
+					{site?.acf?.copyright_disclaimer_footer}
 				</div>
 			</div>
 		</footer>
