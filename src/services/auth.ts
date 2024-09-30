@@ -30,6 +30,14 @@ export const login = async (form: any) => {
 		}
 		const token = {
 			Identificacao: result?.Identificacao,
+			anoEscolar: parseInt(
+				result?.Sistemas?.find(
+					(x: any) =>
+						x?.Produto === 'Vou + longe' &&
+						x?.Perfil === 'Aluno' &&
+						x?.AnoEscolar
+				)?.ComponenteCurricular || '1'
+			),
 		};
 
 		let payload: any = {
