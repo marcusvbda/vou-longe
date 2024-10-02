@@ -5,6 +5,7 @@ import './globals.scss';
 import { getSession, getSite } from '@/services/auth';
 import { GlobalContextProvider } from './context/globalContext';
 import { ThemeContextProvider } from './context/themeContext';
+import WppBtn from '@/components/wppBtn';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default async function RootLayout({ children }: any) {
 				<ThemeContextProvider site={site}>
 					<GlobalContextProvider session={session}>
 						{children}
+						<WppBtn />
 					</GlobalContextProvider>
 				</ThemeContextProvider>
 			</body>
