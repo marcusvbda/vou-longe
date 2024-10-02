@@ -5,7 +5,7 @@ export default function WppBtn() {
 		<Link
 			href="https://api.whatsapp.com/send/?phone=5541991937458&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+seus+produtos.&type=phone_number&app_absent=0"
 			target="_blank"
-			className="cursor rounded-xl fixed right-6 bottom-6 bg-white text-[#25D366] flex items-center text-lg border border-gray-200 gap-2 px-4 py-2"
+			className="z-10 cursor rounded-xl fixed right-6 bottom-6 bg-white text-[#25D366] flex items-center text-lg border border-gray-200 gap-2 px-4 py-2"
 		>
 			<svg width="32" height="32" viewBox="0 0 32 32" fill="none">
 				<path

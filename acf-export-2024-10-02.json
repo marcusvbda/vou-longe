@@ -328,6 +328,33 @@
         "title": "Campos de conteúdo",
         "fields": [
             {
+                "key": "field_66fdcbf97ae23",
+                "label": "Acesso",
+                "name": "acesso",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "aluno": "aluno",
+                    "professor": "professor"
+                },
+                "default_value": "aluno",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
                 "key": "field_66fd5ab2e7f77",
                 "label": "Anos que podem acessar",
                 "name": "anos_que_podem_acessar",

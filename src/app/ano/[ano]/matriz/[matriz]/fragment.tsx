@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Fragment({ options, year, matriz }: any) {
-	const [types] = useState(options.map((x: any) => x?.acf?.tipo));
+	const [types] = useState(
+		Array.from(new Set(options?.map((x: any) => x?.acf?.tipo)))
+	);
 	const [type, setType] = useState(types[0]);
 
 	return (
@@ -40,7 +42,9 @@ export default function Fragment({ options, year, matriz }: any) {
 									src="/assets/images/breadcrumb-arrow.svg"
 									className="mx-2"
 								/>
-								<div className="text-primary font-semibold">{type}</div>
+								<div className="text-primary font-semibold">
+									{(type || '') as any}
+								</div>
 							</div>
 						</div>
 						<div className="w-full flex flex-col items-center mb-20">
@@ -50,7 +54,7 @@ export default function Fragment({ options, year, matriz }: any) {
 										<button
 											onClick={() => setType(item)}
 											key={key}
-											className={`cursor-pointer text-left py-8 ${
+											className={`cursor-pointer text-left py-1 ${
 												item === type
 													? 'text-primary font-semibold'
 													: 'text-tertiary'
@@ -110,7 +114,7 @@ export default function Fragment({ options, year, matriz }: any) {
 												style={{ maxWidth: '432px' }}
 											>
 												<div
-													className="rounded-2xl h-[352px] p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
+													className="rounded-2xl h-[250px] p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
 													style={{
 														backgroundImage: `url(${
 															item?.acf?.thumbnail || ''
