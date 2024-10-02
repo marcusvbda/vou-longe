@@ -1,10 +1,9 @@
 'use client';
 
-import { ThemeContext } from '@/app/context/themeContext';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
 export default function Fragment({ options, year, matriz }: any) {
 	const [types] = useState(options.map((x: any) => x?.acf?.tipo));

@@ -16,7 +16,7 @@ export default async function MatrizPage({ params }: any) {
 			(x?.acf?.anos_que_podem_acessar || '')
 				.split(',')
 				.map(parseInt)
-				.includes(parseInt(ano)) && x?.acf?.matriz === foundMatriz?.id
+				.includes(parseInt(ano)) && x?.acf?.matriz.includes(foundMatriz?.id)
 	);
 	if (!options?.length) return notFound();
 	return <Fragment options={options} year={ano} matriz={foundMatriz} />;
