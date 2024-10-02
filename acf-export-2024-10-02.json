@@ -497,27 +497,6 @@
         "title": "Campos de matriz",
         "fields": [
             {
-                "key": "field_66fd581b0d14d",
-                "label": "Anos que podem acessar",
-                "name": "anos_que_podem_acessar",
-                "aria-label": "",
-                "type": "text",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "maxlength": "",
-                "allow_in_bindings": 0,
-                "placeholder": "",
-                "prepend": "",
-                "append": ""
-            },
-            {
                 "key": "field_66fd58480d14e",
                 "label": "Nome",
                 "name": "nome",
