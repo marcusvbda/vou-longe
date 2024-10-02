@@ -1,0 +1,1199 @@
+[
+    {
+        "key": "group_66fd55729ec0a",
+        "title": "Campos de area de conhecimento",
+        "fields": [
+            {
+                "key": "field_66fd5572efc8c",
+                "label": "Anos que possuem acesso",
+                "name": "anos_que_possuem_acesso",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fd559befc8d",
+                "label": "Nome da area",
+                "name": "nome_da_area",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fd55b3efc8e",
+                "label": "Matrizes",
+                "name": "matrizes",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "area-de-conhecimento"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_66fb0ad5c05bb",
+        "title": "Campos de Configuração de site",
+        "fields": [
+            {
+                "key": "field_66fb0ad591a55",
+                "label": "Logo (Login)",
+                "name": "logo_login",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 1,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fb0c5c5ec6a",
+                "label": "Login (Background)",
+                "name": "login_background",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 1,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fb10550e71a",
+                "label": "Logo (Navbar)",
+                "name": "logo_navbar",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fb109917b31",
+                "label": "Copyright disclaimer (Footer)",
+                "name": "copyright_disclaimer_footer",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fb1112ffc03",
+                "label": "Logo (Footer)",
+                "name": "logo_footer",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fb115b869ec",
+                "label": "Endereço (Footer)",
+                "name": "endereco_footer",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_66fb11e33276b",
+                "label": "Links \"sobre\" (Footer)",
+                "name": "links_sobre_footer",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_66fb11939625d",
+                "label": "Botão \"quero também\" (Footer)",
+                "name": "botao_tambem_quero_footer",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fb1233cb12c",
+                "label": "Background card default",
+                "name": "background_card",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fb1443e6941",
+                "label": "Itens carousel (Home)",
+                "name": "itens_carousel_home",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_66fd5693aed2a",
+                "label": "Background card secundario",
+                "name": "background_card_secundario",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "configuracao-de-site"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_66fd5ab298893",
+        "title": "Campos de conteúdo",
+        "fields": [
+            {
+                "key": "field_66fd5ab2e7f77",
+                "label": "Anos que podem acessar",
+                "name": "anos_que_podem_acessar",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fd5acde7f78",
+                "label": "Matriz",
+                "name": "matriz",
+                "aria-label": "",
+                "type": "relationship",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "matriz"
+                ],
+                "post_status": "",
+                "taxonomy": "",
+                "filters": [
+                    "search"
+                ],
+                "return_format": "object",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "elements": "",
+                "bidirectional": 0,
+                "bidirectional_target": []
+            },
+            {
+                "key": "field_66fd5bef18785",
+                "label": "Conteúdo",
+                "name": "conteudo",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_66fd5c1b300a8",
+                "label": "Thumbnail",
+                "name": "thumbnail",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fd5c45f07fd",
+                "label": "Tipo",
+                "name": "tipo",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Livro": "Livro",
+                    "Video": "Video"
+                },
+                "default_value": false,
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fd5d0200015",
+                "label": "Apresentação",
+                "name": "apresentacao",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "leitor de pdf": "leitor de pdf",
+                    "player de video": "player de video",
+                    "link de acesso": "link de acesso"
+                },
+                "default_value": false,
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "conteudo"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_66fd581c0e7b8",
+        "title": "Campos de matriz",
+        "fields": [
+            {
+                "key": "field_66fd581b0d14d",
+                "label": "Anos que podem acessar",
+                "name": "anos_que_podem_acessar",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fd58480d14e",
+                "label": "Nome",
+                "name": "nome",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fd5a3d75661",
+                "label": "Slug",
+                "name": "slug",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "matriz"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_66fb0dc729c5b",
+        "title": "Campos de menu",
+        "fields": [
+            {
+                "key": "field_66fb0e2fff2fe",
+                "label": "Título",
+                "name": "titulo",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fb0dc7ff2fd",
+                "label": "Perfil",
+                "name": "perfil",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "gestor": "gestor",
+                    "aluno": "aluno",
+                    "professor": "professor"
+                },
+                "default_value": false,
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fd5e67b1e47",
+                "label": "Anos",
+                "name": "anos",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_66fb0dc7ff2fd",
+                            "operator": "==",
+                            "value": "aluno"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66fb0e5aff300",
+                "label": "Tipo",
+                "name": "tipo",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "menu": "menu",
+                    "url": "url"
+                },
+                "default_value": "menu",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_66fb0e3dff2ff",
+                "label": "Itens",
+                "name": "itens",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_66fb0e5aff300",
+                            "operator": "==",
+                            "value": "menu"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_66fb0e83ff301",
+                "label": "URL",
+                "name": "url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_66fb0e5aff300",
+                            "operator": "==",
+                            "value": "url"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "menu"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 1
+    },
+    {
+        "key": "post_type_66fd553fbb9a2",
+        "title": "Areas de conhecimento",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "area-de-conhecimento",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "labels": {
+            "name": "Areas de conhecimento",
+            "singular_name": "area de conhecimento",
+            "menu_name": "Area de conhecimento",
+            "all_items": "Todos os Area de conhecimento",
+            "edit_item": "Editar area de conhecimento",
+            "view_item": "Ver area de conhecimento",
+            "view_items": "Ver Area de conhecimento",
+            "add_new_item": "Adicionar novo area de conhecimento",
+            "add_new": "Adicionar novo area de conhecimento",
+            "new_item": "Novo area de conhecimento",
+            "parent_item_colon": "area de conhecimento ascendente:",
+            "search_items": "Pesquisar Area de conhecimento",
+            "not_found": "Não foi possível encontrar area de conhecimento",
+            "not_found_in_trash": "Não foi possível encontrar area de conhecimento na lixeira",
+            "archives": "Arquivos de area de conhecimento",
+            "attributes": "Atributos de area de conhecimento",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Inserir no area de conhecimento",
+            "uploaded_to_this_item": "Enviado para este area de conhecimento",
+            "filter_items_list": "Filtrar lista de area de conhecimento",
+            "filter_by_date": "Filtrar area de conhecimento por data",
+            "items_list_navigation": "Navegação na lista de Area de conhecimento",
+            "items_list": "Lista de Area de conhecimento",
+            "item_published": "area de conhecimento publicado.",
+            "item_published_privately": "area de conhecimento publicado de forma privada.",
+            "item_reverted_to_draft": "area de conhecimento revertido para rascunho.",
+            "item_scheduled": "area de conhecimento agendado.",
+            "item_updated": "area de conhecimento atualizado.",
+            "item_link": "Link de area de conhecimento",
+            "item_link_description": "Um link para um area de conhecimento."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": "",
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-book"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    },
+    {
+        "key": "post_type_66fb09e167380",
+        "title": "Configurações de site",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "configuracao-de-site",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "labels": {
+            "name": "Configurações de site",
+            "singular_name": "Configuração de site",
+            "menu_name": "Configurações de sites",
+            "all_items": "Todos os Sites",
+            "edit_item": "Editar site",
+            "view_item": "Ver site",
+            "view_items": "Ver Sites",
+            "add_new_item": "Adicionar novo site",
+            "add_new": "Adicionar novo site",
+            "new_item": "Novo site",
+            "parent_item_colon": "site ascendente:",
+            "search_items": "Pesquisar Sites",
+            "not_found": "Não foi possível encontrar sites",
+            "not_found_in_trash": "Não foi possível encontrar sites na lixeira",
+            "archives": "Arquivos de site",
+            "attributes": "Atributos de site",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Inserir no site",
+            "uploaded_to_this_item": "Enviado para este site",
+            "filter_items_list": "Filtrar lista de sites",
+            "filter_by_date": "Filtrar sites por data",
+            "items_list_navigation": "Navegação na lista de Sites",
+            "items_list": "Lista de Sites",
+            "item_published": "site publicado.",
+            "item_published_privately": "site publicado de forma privada.",
+            "item_reverted_to_draft": "site revertido para rascunho.",
+            "item_scheduled": "site agendado.",
+            "item_updated": "site atualizado.",
+            "item_link": "Link de site",
+            "item_link_description": "Um link para um site."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": 0,
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-admin-tools"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    },
+    {
+        "key": "post_type_66fd5a8ead556",
+        "title": "Conteúdos",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "conteudo",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "labels": {
+            "name": "Conteúdos",
+            "singular_name": "conteúdo",
+            "menu_name": "Conteúdos",
+            "all_items": "Todos os Conteúdos",
+            "edit_item": "Editar conteúdo",
+            "view_item": "Ver conteúdo",
+            "view_items": "Ver Conteúdos",
+            "add_new_item": "Adicionar novo conteúdo",
+            "add_new": "Adicionar novo conteúdo",
+            "new_item": "Novo conteúdo",
+            "parent_item_colon": "conteúdo ascendente:",
+            "search_items": "Pesquisar Conteúdos",
+            "not_found": "Não foi possível encontrar conteúdos",
+            "not_found_in_trash": "Não foi possível encontrar conteúdos na lixeira",
+            "archives": "Arquivos de conteúdo",
+            "attributes": "Atributos de conteúdo",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Inserir no conteúdo",
+            "uploaded_to_this_item": "Enviado para este conteúdo",
+            "filter_items_list": "Filtrar lista de conteúdos",
+            "filter_by_date": "Filtrar conteúdos por data",
+            "items_list_navigation": "Navegação na lista de Conteúdos",
+            "items_list": "Lista de Conteúdos",
+            "item_published": "conteúdo publicado.",
+            "item_published_privately": "conteúdo publicado de forma privada.",
+            "item_reverted_to_draft": "conteúdo revertido para rascunho.",
+            "item_scheduled": "conteúdo agendado.",
+            "item_updated": "conteúdo atualizado.",
+            "item_link": "Link de conteúdo",
+            "item_link_description": "Um link para um conteúdo."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": "",
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-category"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    },
+    {
+        "key": "post_type_66fd57db4b9cd",
+        "title": "Matrizes",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "matriz",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "labels": {
+            "name": "Matrizes",
+            "singular_name": "matriz",
+            "menu_name": "Matrizes",
+            "all_items": "Todos os Matrizes",
+            "edit_item": "Editar matriz",
+            "view_item": "Ver matriz",
+            "view_items": "Ver Matrizes",
+            "add_new_item": "Adicionar novo matriz",
+            "add_new": "Adicionar novo matriz",
+            "new_item": "Novo matriz",
+            "parent_item_colon": "matriz ascendente:",
+            "search_items": "Pesquisar Matrizes",
+            "not_found": "Não foi possível encontrar matrizes",
+            "not_found_in_trash": "Não foi possível encontrar matrizes na lixeira",
+            "archives": "Arquivos de matriz",
+            "attributes": "Atributos de matriz",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Inserir no matriz",
+            "uploaded_to_this_item": "Enviado para este matriz",
+            "filter_items_list": "Filtrar lista de matrizes",
+            "filter_by_date": "Filtrar matrizes por data",
+            "items_list_navigation": "Navegação na lista de Matrizes",
+            "items_list": "Lista de Matrizes",
+            "item_published": "matriz publicado.",
+            "item_published_privately": "matriz publicado de forma privada.",
+            "item_reverted_to_draft": "matriz revertido para rascunho.",
+            "item_scheduled": "matriz agendado.",
+            "item_updated": "matriz atualizado.",
+            "item_link": "Link de matriz",
+            "item_link_description": "Um link para um matriz."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": "",
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-awards"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    },
+    {
+        "key": "post_type_66fb0daf2efed",
+        "title": "Menus",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "menu",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "labels": {
+            "name": "Menus",
+            "singular_name": "menu",
+            "menu_name": "Menus",
+            "all_items": "Todos os Menus",
+            "edit_item": "Editar menu",
+            "view_item": "Ver menu",
+            "view_items": "Ver Menus",
+            "add_new_item": "Adicionar novo menu",
+            "add_new": "Adicionar novo menu",
+            "new_item": "Novo menu",
+            "parent_item_colon": "menu ascendente:",
+            "search_items": "Pesquisar Menus",
+            "not_found": "Não foi possível encontrar menus",
+            "not_found_in_trash": "Não foi possível encontrar menus na lixeira",
+            "archives": "Arquivos de menu",
+            "attributes": "Atributos de menu",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Inserir no menu",
+            "uploaded_to_this_item": "Enviado para este menu",
+            "filter_items_list": "Filtrar lista de menus",
+            "filter_by_date": "Filtrar menus por data",
+            "items_list_navigation": "Navegação na lista de Menus",
+            "items_list": "Lista de Menus",
+            "item_published": "menu publicado.",
+            "item_published_privately": "menu publicado de forma privada.",
+            "item_reverted_to_draft": "menu revertido para rascunho.",
+            "item_scheduled": "menu agendado.",
+            "item_updated": "menu atualizado.",
+            "item_link": "Link de menu",
+            "item_link_description": "Um link para um menu."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": "",
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-admin-post"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    }
+]
