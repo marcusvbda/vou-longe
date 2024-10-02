@@ -54,7 +54,7 @@ export default function Fragment({ options, year }: any) {
 										<button
 											onClick={() => setSelected(key)}
 											key={key}
-											className={`cursor-pointer text-left py-8 ${
+											className={`cursor-pointer text-left py-1 ${
 												selected === key
 													? 'text-primary font-semibold'
 													: 'text-tertiary'

@@ -12,7 +12,7 @@ export const GlobalContextProvider = ({
 			session?.Identificacao?.[0]?.Perfis?.[0] || ''
 		).toLowerCase();
 
-		if (['super administrador'].includes(original)) {
+		if (['super administrador', 'gestor escola'].includes(original)) {
 			return 'gestor';
 		}
 
@@ -28,7 +28,7 @@ export const GlobalContextProvider = ({
 	}, [session]);
 
 	const anoDoAluno = useMemo(() => {
-		return 1;
+		// return 5;
 		return session?.anoEscolar;
 	}, [session]);
 

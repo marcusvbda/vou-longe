@@ -65,6 +65,11 @@ const GestorContent = () => {
 				<>
 					<div className="w-full bg-white flex items-center gap-2 justify-between flex-col">
 						<div className="flex w-full gap-2 justify-center mb-10">
+							{!menus.length && (
+								<div className="text-2xl text-muted">
+									Nenhum tipo de ano encontrado
+								</div>
+							)}
 							{menus.map((menu: any, key: any) => (
 								<button
 									key={key}
@@ -83,6 +88,9 @@ const GestorContent = () => {
 							className="w-full flex gap-8 wrap justify-center items-center"
 							style={{ flexWrap: 'wrap' }}
 						>
+							{!menus[selected].items.length && (
+								<div className="text-2xl text-muted">Nenhum ano encontrado</div>
+							)}
 							{menus[selected].items.map((item: any, index: any) => (
 								<Link
 									href={item[2]}
@@ -116,7 +124,6 @@ const AlunoContent = () => {
 	const { anoDoAluno } = useContext(GlobalContext);
 	const { site } = useContext(ThemeContext);
 	const [loadingMenu, setLoadingMenu] = useState(true);
-	const [selected, setSeleted] = useState(0);
 	const [areas, setAreas] = useState<any>([]);
 
 	useEffect(() => {
@@ -147,6 +154,9 @@ const AlunoContent = () => {
 						className="w-full flex gap-8 wrap justify-center items-center"
 						style={{ flexWrap: 'wrap' }}
 					>
+						{!areas.length && (
+							<div className="text-2xl text-muted">Nenhuma área encontrada</div>
+						)}
 						{areas.map((item: any, index: any) => (
 							<Link
 								href={`/ano/${anoDoAluno}?area=${item?.acf?.nome_da_area}`}
@@ -176,7 +186,6 @@ const AlunoContent = () => {
 };
 
 const ProfessorContent = () => {
-	const { anoDoAluno } = useContext(GlobalContext);
 	const { site } = useContext(ThemeContext);
 	const [loadingMenu, setLoadingMenu] = useState(true);
 	const [anos, setAnos] = useState<any>({});
@@ -213,6 +222,9 @@ const ProfessorContent = () => {
 				</div>
 			) : (
 				<>
+					{!Object.keys(anos).length && (
+						<div className="text-2xl text-muted">Nenhum ano encontrado</div>
+					)}
 					{Object.keys(anos).map((ano: string, key: number) => (
 						<div key={key} className="mb-16 w-full">
 							<h1 className="text-3xl font-semibold text-neutral-700 mt-8 text-center text-primary mb-4">
@@ -222,6 +234,11 @@ const ProfessorContent = () => {
 								className="w-full flex gap-8 wrap justify-center items-center"
 								style={{ flexWrap: 'wrap' }}
 							>
+								{!anos[ano]?.items.length && (
+									<div className="text-2xl text-muted">
+										Nenhuma area encontrado
+									</div>
+								)}
 								{(anos[ano]?.items || []).map((item: any, index: any) => (
 									<Link
 										href={`/ano/${anos[ano]?.index}?area=${item?.acf?.nome_da_area}`}
