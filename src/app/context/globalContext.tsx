@@ -28,7 +28,7 @@ export const GlobalContextProvider = ({
 	}, [session]);
 
 	const anoDoAluno = useMemo(() => {
-		// return 5;
+		// return 7;
 		return session?.anoEscolar;
 	}, [session]);
 

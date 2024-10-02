@@ -24,10 +24,7 @@ export default function Fragment({ options, year, matriz }: any) {
 									Página Inicial
 								</Link>
 
-								<Link
-									href={`/ano/${year}}`}
-									className="flex items-center gap-2"
-								>
+								<Link href={`/ano/${year}`} className="flex items-center gap-2">
 									<img
 										src="/assets/images/breadcrumb-arrow.svg"
 										className="mx-2"
@@ -64,7 +61,7 @@ export default function Fragment({ options, year, matriz }: any) {
 									))}
 									<div className="flex flex-row gap-4 items-center">
 										<Link
-											href={`/ano/${year}}`}
+											href={`/ano/${year}`}
 											className="cursor-pointer bg-primary text-white px-6 py-2 rounded-lg items-center justify-center flex gap-2"
 										>
 											<svg
