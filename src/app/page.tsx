@@ -20,7 +20,7 @@ export default function Home() {
 					<Carousel />
 				</div>
 				<div className="w-full flex relative -top-24 flex-col">
-					{perfil === 'aluno' && <AlunoContent />}
+					{['aluno', 'professor'].includes(perfil) && <AlunoProfessorContent />}
 					{perfil === 'gestor' && <GestorContent />}
 				</div>
 			</div>
@@ -109,7 +109,7 @@ const GestorContent = () => {
 	);
 };
 
-const AlunoContent = () => {
+const AlunoProfessorContent = () => {
 	const { anoDoAluno } = useContext(GlobalContext);
 	const { site } = useContext(ThemeContext);
 	const [loadingMenu, setLoadingMenu] = useState(true);

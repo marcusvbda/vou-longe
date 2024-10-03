@@ -39,7 +39,7 @@ export default function DropdownMenu({ title, items, perfil }: any) {
 			{open && (
 				<div
 					className={`absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow ${
-						perfil === 'aluno' && 'w-80'
+						['aluno', 'professor'].includes(perfil) && 'w-80'
 					}`}
 				>
 					<ul className="py-2 text-sm text-gray-700">

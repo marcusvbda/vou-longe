@@ -19,7 +19,7 @@ export default function Navbar() {
 	useEffect(() => {
 		const getMenus = async () => {
 			const areas = await getPosts('area-de-conhecimento');
-			if (perfil === 'aluno') {
+			if (['aluno', 'professor'].includes(perfil)) {
 				const conteudos: any = await getPosts('conteudo');
 				let filtered = (conteudos?.items || []).filter((x: any) => {
 					const anos = (x?.acf?.anos_que_podem_acessar || '')
@@ -51,7 +51,7 @@ export default function Navbar() {
 						}),
 					},
 				]);
-				console.log('carregado menu de aluno ...');
+				console.log('carregado menu de aluno/professor ...');
 			}
 
 			if (perfil === 'gestor') {
@@ -59,33 +59,6 @@ export default function Navbar() {
 				console.log('carregado menu de gestor ...');
 			}
 			setLoadingMenu(false);
-
-			// 		if (['gestor', 'professor'].includes(perfil)) {
-			// 			return x?.acf?.perfil === perfil;
-			// 		}
-			// 		if (perfil === 'aluno') {
-			// 			return (
-			// 				x?.acf?.perfil === perfil &&
-			// 				(x?.acf?.anos || '')
-			// 					.split(',')
-			// 					.map(parseInt)
-			// 					.includes(parseInt(anoDoAluno))
-			// 			);
-			// 		}
-			// 		return true;
-			// 	})
-			// 	.map((x: any) => {
-			// 		return {
-			// 			items: (x?.acf?.itens || '')
-			// 				.split('\r\n')
-			// 				.map((item: any) => item.split('|')),
-			// 			title: x?.acf?.titulo || '',
-			// 			tipo: x?.acf?.tipo || '',
-			// 			url: x?.acf?.url || '',
-			// 		};
-			// 	});
-			// setMenus(filtered);
-			// setLoadingMenu(false);
 		};
 		setLoadingMenu(true);
 		getMenus();

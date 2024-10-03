@@ -4,6 +4,23 @@ import Fragment from './fragment';
 import { getSession } from '@/services/auth';
 
 export default async function MatrizPage({ params }: any) {
+	const session = await getSession();
+	let perfil = '';
+
+	const perfilOriginal = (
+		session?.Identificacao?.[0]?.Perfis?.[0] || ''
+	).toLowerCase();
+
+	if (['super administrador', 'gestor escola'].includes(perfilOriginal)) {
+		perfil = 'gestor';
+	} else if (['aluno'].includes(perfilOriginal)) {
+		perfil = 'aluno';
+	} else if (['professor'].includes(perfilOriginal)) {
+		perfil = 'professor';
+	} else {
+		perfil = 'aluno';
+	}
+
 	const { anoEscolar } = await getSession();
 	const { ano, matriz, conteudo } = params;
 	const foundConteudo = await findPost('conteudo', 'id', conteudo);
@@ -22,6 +39,8 @@ export default async function MatrizPage({ params }: any) {
 	if (!(anos.includes(String(ano)) || anos.includes(String(anoEscolar)))) {
 		return notFound();
 	}
+
+	if (perfil !== foundConteudo?.acf?.acesso) return notFound();
 
 	return <Fragment matriz={foundMatriz} year={ano} content={foundConteudo} />;
 }

@@ -30,12 +30,20 @@ export default async function MatrizPage({ params }: any) {
 	if (!foundMatriz?.id) return notFound();
 	const options = (conteudos?.items || []).filter((x: any) => {
 		const anos = (x?.acf?.anos_que_podem_acessar || '').split(',');
-		return (
-			anos.includes(String(ano)) &&
-			(anos.includes(String(session?.anoEscolar)) ||
-				!['aluno', 'professor'].includes(perfil)) &&
-			x?.acf?.matriz.map(String).includes(String(foundMatriz?.id))
-		);
+		if (perfil === 'gestor') {
+			return (
+				x?.acf?.matriz.map(String).includes(String(foundMatriz?.id)) &&
+				anos.includes(String(ano))
+			);
+		}
+
+		if (['aluno', 'professor'].includes(perfil)) {
+			return (
+				x?.acf?.matriz.map(String).includes(String(foundMatriz?.id)) &&
+				x?.acf?.acesso === perfil &&
+				anos.includes(String(ano))
+			);
+		}
 	});
 
 	if (!options?.length) {
