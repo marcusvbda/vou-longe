@@ -51,10 +51,10 @@ export default function Fragment({ options, year }: any) {
 										<button
 											onClick={() => setSelected(key)}
 											key={key}
-											className={`cursor-pointer text-left py-1 ${
+											className={`cursor-pointer text-left py-1 hover:opacity-100 transition-all duration-300 hover:bg-primary-100 rounded-lg px-4 ${
 												selected === key
-													? 'text-primary font-semibold'
-													: 'text-tertiary'
+													? 'text-primary font-semibold bg-primary-100'
+													: 'text-tertiary opacity-60'
 											}`}
 										>
 											{type.title}

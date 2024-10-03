@@ -6,10 +6,33 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Fragment({ options, year, matriz }: any) {
-	const [types] = useState(
-		Array.from(new Set(options?.map((x: any) => x?.acf?.tipo)))
+	const [types] = useState([
+		'Acomp. de Simulados',
+		'Atividades Extras',
+		'Áudios',
+		'Avaliações',
+		'Jogos',
+		'Livros',
+		'Leitura Guiada',
+		'Material de Apoio',
+		'Simulados',
+		'Trilhas Gamificadas',
+		'Videos',
+		'Sala de aula online',
+	]);
+	const [type, setType] = useState(
+		Array.from(new Set(options?.map((x: any) => x?.acf?.tipo)))[0] || types[0]
 	);
-	const [type, setType] = useState(types[0]);
+
+	const handleClick = (item: string) => {
+		if (item === 'Avaliações') {
+			return window.open(
+				'https://avaliacoesaprendebrasil.homolog.local/',
+				'_blank'
+			);
+		}
+		setType(item);
+	};
 
 	return (
 		<>
@@ -51,18 +74,18 @@ export default function Fragment({ options, year, matriz }: any) {
 								<div className="w-full md:w-3/12 flex flex-row md:flex-col gap-4 md:gap-2 flex-wrap justify-center md:justify-start">
 									{(types || []).map((item: any, key: any) => (
 										<button
-											onClick={() => setType(item)}
+											onClick={() => handleClick(item)}
 											key={key}
-											className={`cursor-pointer text-left py-1 ${
+											className={`cursor-pointer text-left transition-all hover:opacity-100 text-thin duration-300 hover:bg-primary-100 rounded-lg px-4 py-1 ${
 												item === type
-													? 'text-primary font-semibold'
-													: 'text-tertiary'
+													? 'text-primary font-semibold bg-primary-100'
+													: 'text-tertiary opacity-60'
 											}`}
 										>
 											{item}
 										</button>
 									))}
-									<div className="flex flex-row gap-4 items-center">
+									<div className="flex flex-row gap-4 items-center mt-2">
 										<Link
 											href={`/ano/${year}`}
 											className="cursor-pointer bg-primary text-white px-6 py-2 rounded-lg items-center justify-center flex gap-2"
@@ -123,6 +146,12 @@ export default function Fragment({ options, year, matriz }: any) {
 											/>
 										</svg>
 									</div>
+									{(options || []).filter((x: any) => x?.acf?.tipo === type)
+										.length <= 0 && (
+										<div className="w-full py-20 text-center text-muted">
+											Nenhum conteúdo deste tipo
+										</div>
+									)}
 									{(options || [])
 										.filter((x: any) => x?.acf?.tipo === type)
 										.map((item: any, index: any) => (
@@ -130,7 +159,7 @@ export default function Fragment({ options, year, matriz }: any) {
 												href={`/ano/${year}/matriz/${matriz?.acf?.slug}/conteudo/${item?.id}`}
 												key={index}
 												className="w-full md:w-6/12 flex p-4  border border-gray-100 rounded-2xl flex-col gap-2"
-												style={{ maxWidth: '432px' }}
+												style={{ maxWidth: '432px', height: 'fit-content' }}
 											>
 												<div
 													className="rounded-2xl h-[250px] p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
