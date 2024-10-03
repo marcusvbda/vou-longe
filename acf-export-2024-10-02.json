@@ -489,15 +489,13 @@
                     "Acomp. de Simulados": "Acomp. de Simulados",
                     "Atividades Extras": "Atividades Extras",
                     "Áudios": "Áudios",
-                    "Avaliações": "Avaliações",
                     "Jogos": "Jogos",
                     "Livros": "Livros",
                     "Leitura Guiada": "Leitura Guiada",
                     "Material de Apoio": "Material de Apoio",
                     "Simulados": "Simulados",
                     "Trilhas Gamificadas": "Trilhas Gamificadas",
-                    "Videos": "Videos",
-                    "Sala de aula online": "Sala de aula online"
+                    "Videos": "Videos"
                 },
                 "default_value": false,
                 "return_format": "value",

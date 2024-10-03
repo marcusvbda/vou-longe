@@ -18,7 +18,6 @@ export default function Fragment({ options, year, matriz }: any) {
 		'Simulados',
 		'Trilhas Gamificadas',
 		'Videos',
-		'Sala de aula online',
 	]);
 	const [type, setType] = useState(
 		Array.from(new Set(options?.map((x: any) => x?.acf?.tipo)))[0] || types[0]
