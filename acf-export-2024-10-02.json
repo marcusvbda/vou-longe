@@ -50,7 +50,37 @@
                 "label": "Matrizes",
                 "name": "matrizes",
                 "aria-label": "",
-                "type": "textarea",
+                "type": "relationship",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "matriz"
+                ],
+                "post_status": "",
+                "taxonomy": "",
+                "filters": [
+                    "search"
+                ],
+                "return_format": "object",
+                "min": 1,
+                "max": "",
+                "allow_in_bindings": 1,
+                "elements": "",
+                "bidirectional": 0,
+                "bidirectional_target": []
+            },
+            {
+                "key": "field_66fed02409be6",
+                "label": "Thumbnail",
+                "name": "thumbnail",
+                "aria-label": "",
+                "type": "url",
                 "instructions": "",
                 "required": 1,
                 "conditional_logic": 0,
@@ -60,11 +90,8 @@
                     "id": ""
                 },
                 "default_value": "",
-                "maxlength": "",
                 "allow_in_bindings": 0,
-                "rows": "",
-                "placeholder": "",
-                "new_lines": ""
+                "placeholder": ""
             }
         ],
         "location": [
@@ -459,8 +486,18 @@
                     "id": ""
                 },
                 "choices": {
-                    "Livro": "Livro",
-                    "Video": "Video"
+                    "Acomp. de Simulados": "Acomp. de Simulados",
+                    "Atividades Extras": "Atividades Extras",
+                    "Áudios": "Áudios",
+                    "Avaliações": "Avaliações",
+                    "Jogos": "Jogos",
+                    "Livros": "Livros",
+                    "Leitura Guiada": "Leitura Guiada",
+                    "Material de Apoio": "Material de Apoio",
+                    "Simulados": "Simulados",
+                    "Trilhas Gamificadas": "Trilhas Gamificadas",
+                    "Videos": "Videos",
+                    "Sala de aula online": "Sala de aula online"
                 },
                 "default_value": false,
                 "return_format": "value",
@@ -564,37 +601,13 @@
                 "placeholder": "",
                 "prepend": "",
                 "append": ""
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "matriz"
-                }
-            ]
-        ],
-        "menu_order": 0,
-        "position": "normal",
-        "style": "default",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": true,
-        "description": "",
-        "show_in_rest": 1
-    },
-    {
-        "key": "group_66fb0dc729c5b",
-        "title": "Campos de menu",
-        "fields": [
+            },
             {
-                "key": "field_66fb0e2fff2fe",
-                "label": "Título",
-                "name": "titulo",
+                "key": "field_66fec6726f5be",
+                "label": "Icon",
+                "name": "icon",
                 "aria-label": "",
-                "type": "text",
+                "type": "url",
                 "instructions": "",
                 "required": 1,
                 "conditional_logic": 0,
@@ -604,142 +617,18 @@
                     "id": ""
                 },
                 "default_value": "",
-                "maxlength": "",
                 "allow_in_bindings": 0,
-                "placeholder": "",
-                "prepend": "",
-                "append": ""
-            },
-            {
-                "key": "field_66fb0dc7ff2fd",
-                "label": "Perfil",
-                "name": "perfil",
-                "aria-label": "",
-                "type": "select",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "choices": {
-                    "gestor": "gestor",
-                    "aluno": "aluno",
-                    "professor": "professor"
-                },
-                "default_value": false,
-                "return_format": "value",
-                "multiple": 0,
-                "allow_null": 0,
-                "allow_in_bindings": 0,
-                "ui": 0,
-                "ajax": 0,
                 "placeholder": ""
             },
             {
-                "key": "field_66fd5e67b1e47",
-                "label": "Anos",
-                "name": "anos",
+                "key": "field_66fec67d6f5bf",
+                "label": "Descrição",
+                "name": "descricao",
                 "aria-label": "",
                 "type": "text",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_66fb0dc7ff2fd",
-                            "operator": "==",
-                            "value": "aluno"
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "maxlength": "",
-                "allow_in_bindings": 0,
-                "placeholder": "",
-                "prepend": "",
-                "append": ""
-            },
-            {
-                "key": "field_66fb0e5aff300",
-                "label": "Tipo",
-                "name": "tipo",
-                "aria-label": "",
-                "type": "select",
                 "instructions": "",
                 "required": 1,
                 "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "choices": {
-                    "menu": "menu",
-                    "url": "url"
-                },
-                "default_value": "menu",
-                "return_format": "value",
-                "multiple": 0,
-                "allow_null": 0,
-                "allow_in_bindings": 0,
-                "ui": 0,
-                "ajax": 0,
-                "placeholder": ""
-            },
-            {
-                "key": "field_66fb0e3dff2ff",
-                "label": "Itens",
-                "name": "itens",
-                "aria-label": "",
-                "type": "textarea",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_66fb0e5aff300",
-                            "operator": "==",
-                            "value": "menu"
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "maxlength": "",
-                "allow_in_bindings": 0,
-                "rows": "",
-                "placeholder": "",
-                "new_lines": ""
-            },
-            {
-                "key": "field_66fb0e83ff301",
-                "label": "URL",
-                "name": "url",
-                "aria-label": "",
-                "type": "text",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_66fb0e5aff300",
-                            "operator": "==",
-                            "value": "url"
-                        }
-                    ]
-                ],
                 "wrapper": {
                     "width": "",
                     "class": "",
@@ -758,7 +647,7 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "menu"
+                    "value": "matriz"
                 }
             ]
         ],
@@ -1092,92 +981,6 @@
         "menu_icon": {
             "type": "dashicons",
             "value": "dashicons-awards"
-        },
-        "rename_capabilities": false,
-        "singular_capability_name": "post",
-        "plural_capability_name": "posts",
-        "supports": [
-            "title",
-            "custom-fields"
-        ],
-        "taxonomies": "",
-        "has_archive": false,
-        "has_archive_slug": "",
-        "rewrite": {
-            "permalink_rewrite": "post_type_key",
-            "with_front": "1",
-            "feeds": "0",
-            "pages": "1"
-        },
-        "query_var": "post_type_key",
-        "query_var_name": "",
-        "can_export": true,
-        "delete_with_user": false,
-        "register_meta_box_cb": "",
-        "enter_title_here": ""
-    },
-    {
-        "key": "post_type_66fb0daf2efed",
-        "title": "Menus",
-        "menu_order": 0,
-        "active": true,
-        "post_type": "menu",
-        "advanced_configuration": true,
-        "import_source": "",
-        "import_date": "",
-        "labels": {
-            "name": "Menus",
-            "singular_name": "menu",
-            "menu_name": "Menus",
-            "all_items": "Todos os Menus",
-            "edit_item": "Editar menu",
-            "view_item": "Ver menu",
-            "view_items": "Ver Menus",
-            "add_new_item": "Adicionar novo menu",
-            "add_new": "Adicionar novo menu",
-            "new_item": "Novo menu",
-            "parent_item_colon": "menu ascendente:",
-            "search_items": "Pesquisar Menus",
-            "not_found": "Não foi possível encontrar menus",
-            "not_found_in_trash": "Não foi possível encontrar menus na lixeira",
-            "archives": "Arquivos de menu",
-            "attributes": "Atributos de menu",
-            "featured_image": "",
-            "set_featured_image": "",
-            "remove_featured_image": "",
-            "use_featured_image": "",
-            "insert_into_item": "Inserir no menu",
-            "uploaded_to_this_item": "Enviado para este menu",
-            "filter_items_list": "Filtrar lista de menus",
-            "filter_by_date": "Filtrar menus por data",
-            "items_list_navigation": "Navegação na lista de Menus",
-            "items_list": "Lista de Menus",
-            "item_published": "menu publicado.",
-            "item_published_privately": "menu publicado de forma privada.",
-            "item_reverted_to_draft": "menu revertido para rascunho.",
-            "item_scheduled": "menu agendado.",
-            "item_updated": "menu atualizado.",
-            "item_link": "Link de menu",
-            "item_link_description": "Um link para um menu."
-        },
-        "description": "",
-        "public": true,
-        "hierarchical": false,
-        "exclude_from_search": false,
-        "publicly_queryable": true,
-        "show_ui": true,
-        "show_in_menu": true,
-        "admin_menu_parent": "",
-        "show_in_admin_bar": true,
-        "show_in_nav_menus": true,
-        "show_in_rest": true,
-        "rest_base": "",
-        "rest_namespace": "wp\/v2",
-        "rest_controller_class": "WP_REST_Posts_Controller",
-        "menu_position": "",
-        "menu_icon": {
-            "type": "dashicons",
-            "value": "dashicons-admin-post"
         },
         "rename_capabilities": false,
         "singular_capability_name": "post",
