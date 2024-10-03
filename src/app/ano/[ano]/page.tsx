@@ -1,4 +1,4 @@
-import { getPosts } from '@/services/wordpress';
+import { findPost, getPosts } from '@/services/wordpress';
 import { notFound } from 'next/navigation';
 import Fragment from './fragment';
 import { getSession } from '@/services/auth';
@@ -21,24 +21,27 @@ export default async function AnoPage({ params }: any) {
 	} else {
 		perfil = 'aluno';
 	}
-
-	const options = (areas?.items || [])
-		.filter((x: any) => {
-			const anos = (x?.acf?.anos_que_possuem_acesso || '').split(',');
-			return (
-				anos.includes(String(ano)) &&
-				(anos.includes(String(session.anoEscolar)) ||
-					['gestor', 'professor'].includes(perfil))
-			);
-		})
-		.map((item: any) => {
-			return {
-				title: item?.acf?.nome_da_area || '',
-				items: (item?.acf?.matrizes || '')
-					.split('\r\n')
-					.map((item: any) => item.split('|')),
-			};
-		});
+	const matrizes = await getPosts('matriz');
+	const options = (areas?.items || []).filter((x: any) => {
+		const anos = (x?.acf?.anos_que_possuem_acesso || '').split(',');
+		return (
+			anos.includes(String(ano)) &&
+			(anos.includes(String(session.anoEscolar)) ||
+				['gestor', 'professor'].includes(perfil))
+		);
+	});
 	if (!options?.length) return notFound();
-	return <Fragment options={options} year={ano} />;
+	let _options = [];
+	for (let i = 0; i < options.length; i++) {
+		const row = options[i];
+		_options.push({
+			title: row.acf?.nome_da_area,
+			items: matrizes.items
+				.filter((x: any) =>
+					row?.acf?.matrizes.map(String).includes(String(x.id))
+				)
+				.map((x: any) => [x?.acf?.nome, x.acf?.slug]),
+		});
+	}
+	return <Fragment options={_options} year={ano} />;
 }

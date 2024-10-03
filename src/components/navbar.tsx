@@ -5,48 +5,83 @@ import AspectRatio from './aspectRatio';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { GlobalContext } from '@/app/context/globalContext';
 import { ThemeContext } from '@/app/context/themeContext';
-import { getPosts } from '@/services/wordpress';
+import { findPost, getPosts } from '@/services/wordpress';
 import DropdownMenu from './DropdownMenu';
+import { title } from 'process';
 
 export default function Navbar() {
 	const { site } = useContext(ThemeContext);
 	const { perfil, session, anoDoAluno } = useContext(GlobalContext);
-	const [loadingMenu, setLoadingMenu] = useState(true);
+	const [loadingMenu, setLoadingMenu] = useState(false);
 	const [menus, setMenus] = useState<any>([]);
 
 	useEffect(() => {
 		const getMenus = async () => {
-			setLoadingMenu(true);
-			const typeMenus: any = await getPosts('menu');
-			const filtered = (typeMenus?.items || [])
-				.filter((x: any) => {
-					if (['gestor', 'professor'].includes(perfil)) {
-						return x?.acf?.perfil === perfil;
-					}
-					if (perfil === 'aluno') {
-						return (
-							x?.acf?.perfil === perfil &&
-							(x?.acf?.anos || '')
-								.split(',')
-								.map(parseInt)
-								.includes(parseInt(anoDoAluno))
-						);
-					}
-					return true;
-				})
-				.map((x: any) => {
-					return {
-						items: (x?.acf?.itens || '')
-							.split('\r\n')
-							.map((item: any) => item.split('|')),
-						title: x?.acf?.titulo || '',
-						tipo: x?.acf?.tipo || '',
-						url: x?.acf?.url || '',
-					};
+			const areas = await getPosts('area-de-conhecimento');
+			if (perfil === 'aluno') {
+				const conteudos: any = await getPosts('conteudo');
+				let filtered = (conteudos?.items || []).filter((x: any) => {
+					const anos = (x?.acf?.anos_que_podem_acessar || '')
+						.split(',')
+						.map(String);
+					return (
+						x?.acf?.acesso === 'aluno' && anos.includes(String(anoDoAluno))
+					);
 				});
-			setMenus(filtered);
+				for (let i = 0; i < filtered.length; i++) {
+					const matrizId = (filtered[i]?.acf?.matriz || [])[0];
+					const matriz: any = await findPost('matriz', 'id', matrizId);
+					matriz.area = areas?.items?.find((x: any) =>
+						x?.acf?.matrizes.includes(matriz.id)
+					);
+					filtered[i].matriz = matriz;
+				}
+				setMenus([
+					{
+						tipo: 'menu',
+						title: 'Àreas de Conhecimento',
+						items: filtered.map((x: any) => {
+							return [
+								x?.matriz?.acf?.nome,
+								x?.matriz?.acf?.descricao,
+								`/ano/9?area=${x?.matriz?.area?.acf?.nome_da_area}`,
+								x?.matriz?.acf?.icon,
+							];
+						}),
+					},
+				]);
+				console.log('carregado menu de aluno ...');
+			}
 			setLoadingMenu(false);
+
+			// 		if (['gestor', 'professor'].includes(perfil)) {
+			// 			return x?.acf?.perfil === perfil;
+			// 		}
+			// 		if (perfil === 'aluno') {
+			// 			return (
+			// 				x?.acf?.perfil === perfil &&
+			// 				(x?.acf?.anos || '')
+			// 					.split(',')
+			// 					.map(parseInt)
+			// 					.includes(parseInt(anoDoAluno))
+			// 			);
+			// 		}
+			// 		return true;
+			// 	})
+			// 	.map((x: any) => {
+			// 		return {
+			// 			items: (x?.acf?.itens || '')
+			// 				.split('\r\n')
+			// 				.map((item: any) => item.split('|')),
+			// 			title: x?.acf?.titulo || '',
+			// 			tipo: x?.acf?.tipo || '',
+			// 			url: x?.acf?.url || '',
+			// 		};
+			// 	});
+			// setMenus(filtered);
+			// setLoadingMenu(false);
 		};
+		setLoadingMenu(true);
 		getMenus();
 	}, []);
 

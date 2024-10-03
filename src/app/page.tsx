@@ -161,9 +161,7 @@ const AlunoContent = () => {
 								<div
 									className="p-4 w-full text-white  rounded-2xl text-center flex font-semibold items-center justify-center text-3xl"
 									style={{
-										backgroundImage: `url(${
-											item?.acf?.imagem_de_fundo || site?.acf?.background_card
-										})`,
+										backgroundImage: `url(${item?.acf?.thumbnail})`,
 										backgroundSize: 'cover',
 										backgroundRepeat: 'no-repeat',
 									}}

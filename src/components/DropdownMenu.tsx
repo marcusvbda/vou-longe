@@ -41,7 +41,7 @@ export default function DropdownMenu({ title, items }: any) {
 					<ul className="py-2 text-sm text-gray-700">
 						{items.map((item: any, index: any) => (
 							<li key={index} className="relative">
-								<a
+								<Link
 									href={item[2]}
 									className="px-4 py-2 text-neutral-900 hover:bg-gray-100 items-start w-full flex gap-4"
 								>
@@ -59,7 +59,7 @@ export default function DropdownMenu({ title, items }: any) {
 										</strong>
 										<small className="text-xs text-black/40">{item[1]}</small>
 									</div>
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>
