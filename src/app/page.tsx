@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import { getPosts } from '@/services/wordpress';
 import { ThemeContext } from './context/themeContext';
 import Link from 'next/link';
+import { menuGestor } from './constants/gestor';
 
 export default function Home() {
 	const { perfil } = useContext(GlobalContext);
@@ -19,8 +20,8 @@ export default function Home() {
 					<Carousel />
 				</div>
 				<div className="w-full flex relative -top-24 flex-col">
-					{['gestor', 'professor'].includes(perfil) && <GestorContent />}
 					{perfil === 'aluno' && <AlunoContent />}
+					{perfil === 'gestor' && <GestorContent />}
 				</div>
 			</div>
 			<Footer />
@@ -37,18 +38,7 @@ const GestorContent = () => {
 	useEffect(() => {
 		const getMenus = async () => {
 			setLoadingMenu(true);
-			const typeMenus: any = await getPosts('menu');
-			const filtered = (typeMenus?.items || [])
-				.filter((x: any) => x?.acf?.perfil === 'gestor')
-				.map((x: any) => {
-					return {
-						items: (x?.acf?.itens || '')
-							.split('\r\n')
-							.map((item: any) => item.split('|')),
-						title: x?.acf?.titulo || '',
-					};
-				});
-			setMenus(filtered);
+			setMenus(menuGestor);
 			setLoadingMenu(false);
 		};
 		getMenus();

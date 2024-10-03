@@ -8,6 +8,7 @@ import { ThemeContext } from '@/app/context/themeContext';
 import { findPost, getPosts } from '@/services/wordpress';
 import DropdownMenu from './DropdownMenu';
 import { title } from 'process';
+import { menuGestor } from '@/app/constants/gestor';
 
 export default function Navbar() {
 	const { site } = useContext(ThemeContext);
@@ -51,6 +52,11 @@ export default function Navbar() {
 					},
 				]);
 				console.log('carregado menu de aluno ...');
+			}
+
+			if (perfil === 'gestor') {
+				setMenus(menuGestor);
+				console.log('carregado menu de gestor ...');
 			}
 			setLoadingMenu(false);
 
@@ -115,6 +121,7 @@ export default function Navbar() {
 								.filter((x: any) => x.tipo === 'menu')
 								.map((menu: any, key: number) => (
 									<DropdownMenu
+										perfil={perfil}
 										key={key}
 										title={menu.title}
 										items={menu.items}

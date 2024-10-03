@@ -22,5 +22,6 @@ export default async function MatrizPage({ params }: any) {
 	if (!(anos.includes(String(ano)) || anos.includes(String(anoEscolar)))) {
 		return notFound();
 	}
+
 	return <Fragment matriz={foundMatriz} year={ano} content={foundConteudo} />;
 }

@@ -25,7 +25,6 @@ export default function Fragment({ options, year, matriz }: any) {
 									<img src="/assets/images/home.svg" />
 									Página Inicial
 								</Link>
-
 								<Link href={`/ano/${year}`} className="flex items-center gap-2">
 									<img
 										src="/assets/images/breadcrumb-arrow.svg"

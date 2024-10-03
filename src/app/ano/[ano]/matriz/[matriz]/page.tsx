@@ -32,10 +32,14 @@ export default async function MatrizPage({ params }: any) {
 		const anos = (x?.acf?.anos_que_podem_acessar || '').split(',');
 		return (
 			anos.includes(String(ano)) &&
-			(anos.includes(String(session?.anoEscolar)) || perfil !== 'aluno') &&
-			x?.acf?.acesso === perfil
+			(anos.includes(String(session?.anoEscolar)) ||
+				!['aluno', 'professor'].includes(perfil)) &&
+			x?.acf?.matriz.map(String).includes(String(foundMatriz?.id))
 		);
 	});
-	if (!options?.length) return notFound();
+
+	if (!options?.length) {
+		return notFound();
+	}
 	return <Fragment options={options} year={ano} matriz={foundMatriz} />;
 }
