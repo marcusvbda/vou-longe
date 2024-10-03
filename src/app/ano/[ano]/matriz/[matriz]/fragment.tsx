@@ -30,13 +30,13 @@ export default function Fragment({ options, year, matriz }: any) {
 										src="/assets/images/breadcrumb-arrow.svg"
 										className="mx-2"
 									/>
-									<div className="font-semibold">Area de conhecimento</div>
+									<div>Area de conhecimento</div>
 								</Link>
 								<img
 									src="/assets/images/breadcrumb-arrow.svg"
 									className="mx-2"
 								/>
-								<div className="font-semibold">{matriz?.acf?.nome}</div>
+								<div>{matriz?.acf?.nome}</div>
 								<img
 									src="/assets/images/breadcrumb-arrow.svg"
 									className="mx-2"
