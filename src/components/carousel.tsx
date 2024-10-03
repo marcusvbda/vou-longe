@@ -48,7 +48,7 @@ export default function Carousel() {
 									<div className="w-full md:w-5/12 flex flex-col">
 										{slide[1] && (
 											<h1
-												className="text-6xl font-semibold mt-10 md:mt-0"
+												className="text-6xl font-semibold mt-10 md:mt-0 font-lexend-deca"
 												dangerouslySetInnerHTML={{ __html: slide[1] }}
 											/>
 										)}

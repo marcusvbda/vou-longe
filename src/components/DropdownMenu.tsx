@@ -16,7 +16,7 @@ export default function DropdownMenu({ title, items, perfil }: any) {
 		>
 			<button
 				onClick={() => setOpen(!open)}
-				className="flex gap-1 items-center text-primary font-semibold cursor-pointer"
+				className="flex gap-1 items-center text-primary font-semibold cursor-pointer font-lexend-deca"
 			>
 				{title}
 				<div
@@ -60,7 +60,7 @@ export default function DropdownMenu({ title, items, perfil }: any) {
 										}}
 									/>
 									<div className="flex flex-col">
-										<strong className="font-semibold text-neutral-800 ">
+										<strong className="font-semibold text-neutral-800">
 											{item[0]}
 										</strong>
 										{item[1] && (

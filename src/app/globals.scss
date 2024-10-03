@@ -10,9 +10,18 @@ body {
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+.font-lexend-deca {
+	font-family: 'Lexend Deca', sans-serif !important;
+}
+
+.font-lexend {
+	font-family: 'Lexend', sans-serif !important;
+}
 
 body {
-	font-family: 'Lexend', sans-serif;
+	font-family: 'Lexend', sans-serif !important;
 }
 
 .font-concert-one {

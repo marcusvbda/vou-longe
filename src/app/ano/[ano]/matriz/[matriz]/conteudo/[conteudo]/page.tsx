@@ -40,7 +40,9 @@ export default async function MatrizPage({ params }: any) {
 		return notFound();
 	}
 
-	if (perfil !== foundConteudo?.acf?.acesso) return notFound();
+	if (perfil !== foundConteudo?.acf?.acesso && perfil !== 'gestor') {
+		return notFound();
+	}
 
 	return <Fragment matriz={foundMatriz} year={ano} content={foundConteudo} />;
 }
