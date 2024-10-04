@@ -8,20 +8,39 @@ export const getPosts = async (postType: string, params: any = {}) => {
 		params.per_page || 100
 	}&page=${page}`;
 	const res = await fetch(route, {
-		next: { revalidate: 60 * 1 },
+		cache: 'no-store',
 	});
-
-	const pages = res.headers.get('X-WP-TotalPages');
+	const pages = res.headers.get('X-WP-TotalPages') || 1;
 	const total = res.headers.get('X-WP-Total');
 
 	const items = await res.json();
 
+	while (page < pages) {
+		const res = await fetch(route, {
+			cache: 'no-store',
+		});
+		const { items } = await res.json();
+		items.forEach((item: any) => {
+			items.push(item);
+		});
+	}
+
 	return {
 		items,
-		page,
-		pages: pages ? parseInt(pages) : 1,
 		total: total ? parseInt(total) : 1,
 	};
+};
+
+const fetchContent = async (url: string, page = 1, old = []) => {
+	const res = await fetch(url, {
+		cache: 'no-store',
+	});
+	const pages = res.headers.get('X-WP-TotalPages');
+	const total = res.headers.get('X-WP-Total');
+
+	const items = await res.json();
+	old.concat(items);
+	return old.concat(items);
 };
 
 export const findPost = async (
@@ -34,7 +53,7 @@ export const findPost = async (
 	while (true) {
 		let payload: any = { page };
 		if (type === 'simple') payload.id = filterValue;
-		const res = await getPosts(postType, payload);
+		const res: any = await getPosts(postType, payload);
 		if (type === 'simple' && res) return res?.items;
 		const { items, pages } = res;
 		const found = (Array.isArray(items) ? items : [items]).find((item: any) => {
