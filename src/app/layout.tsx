@@ -6,6 +6,7 @@ import { getSession, getSite } from '@/services/auth';
 import { GlobalContextProvider } from './context/globalContext';
 import { ThemeContextProvider } from './context/themeContext';
 import WppBtn from '@/components/wppBtn';
+import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -22,6 +23,11 @@ export default async function RootLayout({ children }: any) {
 					<GlobalContextProvider session={session}>
 						{children}
 						<WppBtn />
+						<Script
+							src="https://cdn.userway.org/widget.js"
+							data-account="RkKmjhw0Hr"
+							strategy="afterInteractive" // Carregar após a interação
+						/>
 					</GlobalContextProvider>
 				</ThemeContextProvider>
 			</body>
