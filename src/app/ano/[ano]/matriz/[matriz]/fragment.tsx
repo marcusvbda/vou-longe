@@ -24,7 +24,7 @@ export default function Fragment({ options, year, matriz }: any) {
 
 	const [types] = useState(
 		defaultState.filter((x: any) =>
-			perfil === 'aluno' ? !['Avaliações'].includes(x) : true
+			perfil === 'aluno' ? !['Avaliações', 'Simulados'].includes(x) : true
 		)
 	);
 
