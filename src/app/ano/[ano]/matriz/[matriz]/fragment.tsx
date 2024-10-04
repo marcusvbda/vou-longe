@@ -12,7 +12,6 @@ export default function Fragment({ options, year, matriz }: any) {
 		'Acomp. de Simulados',
 		'Atividades Extras',
 		'Áudios',
-		'Avaliações',
 		'Jogos',
 		'Livros',
 		'Leitura Guiada',
@@ -24,7 +23,7 @@ export default function Fragment({ options, year, matriz }: any) {
 
 	const [types] = useState(
 		defaultState.filter((x: any) =>
-			perfil === 'aluno' ? !['Avaliações', 'Simulados'].includes(x) : true
+			perfil === 'aluno' ? !['Simulados'].includes(x) : true
 		)
 	);
 
@@ -33,12 +32,6 @@ export default function Fragment({ options, year, matriz }: any) {
 	);
 
 	const handleClick = (item: string) => {
-		if (item === 'Avaliações') {
-			return window.open(
-				'https://avaliacoesaprendebrasil.homolog.local/',
-				'_blank'
-			);
-		}
 		setType(item);
 	};
 

@@ -58,7 +58,7 @@ export default function Navbar() {
 							)
 					);
 
-					const menuItems = uniqueMatriz.map((x: any) => [
+					let menuItems = uniqueMatriz.map((x: any) => [
 						x?.matriz?.acf?.nome,
 						x?.matriz?.acf?.descricao,
 						`/ano/${anoDoAluno}?area=${x?.matriz?.area?.acf?.nome_da_area}`,
@@ -66,13 +66,23 @@ export default function Navbar() {
 					]);
 
 					if (isMounted) {
-						setMenus([
+						const newMenus: any = [
 							{
 								tipo: 'menu',
 								title: 'Areas de Conhecimento',
 								items: menuItems,
 							},
-						]);
+						];
+
+						if (perfil === 'professor') {
+							newMenus.push({
+								tipo: 'link',
+								title: 'Avaliações',
+								url: 'https://avaliacoesaprendebrasil.homolog.local/',
+							});
+						}
+
+						setMenus(newMenus);
 					}
 				}
 
@@ -101,7 +111,7 @@ export default function Navbar() {
 	}, [session]);
 
 	return (
-		<div className="bg-white px-6 py-4 rounded-2xl shadow-md w-full md:w-8/12 flex flex-col md:flex-row items-center gap-4 border border-gray-100 z-10">
+		<div className="bg-white px-6 py-4 rounded-2xl shadow-md w-full md:w-9/12 flex flex-col md:flex-row items-center gap-4 border border-gray-100 z-10">
 			<Link
 				href="/"
 				className="pb-0 md:pb-6 cursor-pointer hover:opacity-70 transition duration-300"
@@ -136,6 +146,7 @@ export default function Navbar() {
 								.filter((x: any) => x.tipo === 'link')
 								.map((menu: any, key: number) => (
 									<Link
+										target="_blank"
 										key={key}
 										href={menu.url}
 										className="flex gap-1 items-center text-primary font-semibold cursor-pointer"

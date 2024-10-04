@@ -65,4 +65,9 @@ export const menuGestor = [
 			],
 		],
 	},
+	{
+		tipo: 'link',
+		title: 'Avaliações',
+		url: 'https://avaliacoesaprendebrasil.homolog.local/',
+	},
 ];
