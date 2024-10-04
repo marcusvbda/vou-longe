@@ -59,8 +59,8 @@ export default function Navbar() {
 					);
 
 					let menuItems = uniqueMatriz.map((x: any) => [
-						x?.matriz?.acf?.nome,
-						x?.matriz?.acf?.descricao,
+						x?.matriz?.area?.acf?.nome_da_area,
+						x?.matriz?.area?.acf?.descricao,
 						`/ano/${anoDoAluno}?area=${x?.matriz?.area?.acf?.nome_da_area}`,
 						x?.matriz?.acf?.icon,
 					]);

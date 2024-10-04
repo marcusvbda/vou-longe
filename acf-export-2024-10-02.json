@@ -92,6 +92,27 @@
                 "default_value": "",
                 "allow_in_bindings": 0,
                 "placeholder": ""
+            },
+            {
+                "key": "field_67003fa7f6cc1",
+                "label": "Descrição",
+                "name": "descricao",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
             }
         ],
         "location": [
@@ -617,27 +638,6 @@
                 "default_value": "",
                 "allow_in_bindings": 0,
                 "placeholder": ""
-            },
-            {
-                "key": "field_66fec67d6f5bf",
-                "label": "Descrição",
-                "name": "descricao",
-                "aria-label": "",
-                "type": "text",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "maxlength": "",
-                "allow_in_bindings": 0,
-                "placeholder": "",
-                "prepend": "",
-                "append": ""
             }
         ],
         "location": [
