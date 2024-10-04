@@ -1,6 +1,7 @@
 'use client';
 
 import { ThemeContext } from '@/app/context/themeContext';
+import AspectRatio from '@/components/aspectRatio';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
@@ -28,30 +29,37 @@ export default function Fragment({ options, year }: any) {
 					<Navbar />
 				</div>
 				<div className="w-full flex flex-col items-center mb-20">
-					<div className="px-8 md:px-20 w-full">
+					<div className="px-2 md:px-20 w-full">
 						<div className="flex w-full md:w-auto">
-							<div className="mt-8 w-full md:w-auto border-t border-b border-gray-300 py-2 flex text-neutral-500 text-sm items-center flex-wrap gap-2">
-								<Link href="/" className="flex gap-2 items-center">
-									<img src="/assets/images/home.svg" />
+							<div className="mt-4 md:mt-8 w-full md:w-auto border-t border-b border-gray-300 py-2 flex text-neutral-500 text-sm items-center flex-wrap gap-2">
+								<Link
+									href="/"
+									className="flex gap-2 items-center text-xs md:text-sm"
+								>
+									<AspectRatio
+										src="/assets/images/home.svg"
+										size={{ width: 18 }}
+										className="mr-1"
+									/>
 									Página Inicial
 								</Link>
 								<img
 									src="/assets/images/breadcrumb-arrow.svg"
-									className="mx-2"
+									className="mx-1"
 								/>
-								<div className="text-primary font-semibold">
+								<div className="text-primary font-semibold text-xs md:text-sm">
 									Area de conhecimento
 								</div>
 							</div>
 						</div>
 						<div className="w-full flex flex-col items-center mb-20">
-							<div className="w-full flex flex-col md:flex-row gap-4 mt-8 mb-10 ">
-								<div className="w-full md:w-3/12 flex flex-row md:flex-col gap-4 md:gap-2 flex-wrap justify-center md:justify-start">
+							<div className="w-full flex flex-col md:flex-row gap-4 mb-10 mt-8">
+								<div className="w-full md:w-3/12 flex flex-row md:flex-col gap-2 md:gap-2 flex-wrap justify-center md:justify-start">
 									{(options || []).map((type: any, key: any) => (
 										<button
 											onClick={() => setSelected(key)}
 											key={key}
-											className={`cursor-pointer text-left py-1 hover:opacity-100 transition-all duration-300 hover:bg-primary-100 rounded-lg px-4 ${
+											className={`w-full md:w-auto text-sm cursor-pointer text-left py-2 hover:opacity-100 transition-all duration-300 hover:bg-primary-100 rounded-lg px-4 ${
 												selected === key
 													? 'text-primary font-semibold bg-primary-100'
 													: 'text-tertiary opacity-60'
@@ -65,7 +73,7 @@ export default function Fragment({ options, year }: any) {
 									className="w-full flex gap-8 wrap relative"
 									style={{ flexWrap: 'wrap' }}
 								>
-									<div className="w-[40px] absolute right-60 top-40">
+									<div className="w-[40px] absolute right-10 md:right-60 top-10 md:top-40">
 										<svg className="w-full" viewBox="0 0 71 98" fill="none">
 											<path
 												d="M46.2257 34.8751C46.2257 28.7691 41.2716 23.8208 35.1685 23.8208C29.0613 23.8208 24.1113 28.7691 24.1113 34.8751C24.1113 39.0214 26.3957 42.6275 29.7719 44.5211L30.0015 37.1856C30.0015 34.1843 32.4363 31.7495 35.4405 31.7495H35.7491C38.115 31.7495 40.0328 33.6669 40.0328 36.0331V44.793C43.6934 42.9944 46.2257 39.2323 46.2257 34.8751Z"
@@ -90,7 +98,6 @@ export default function Fragment({ options, year }: any) {
 											href={`/ano/${year}/matriz/${item[1]}`}
 											key={index}
 											className="w-full md:w-[340px] h-[240px] flex p-4  border border-gray-100 rounded-2xl"
-											style={{ maxWidth: '340px' }}
 										>
 											<div
 												className="rounded-2xl p-4 w-full font-concert-one text-white text-center flex font-semibold items-center justify-center text-3xl"

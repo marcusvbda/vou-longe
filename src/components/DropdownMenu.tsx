@@ -16,7 +16,7 @@ export default function DropdownMenu({ title, items, perfil }: any) {
 		>
 			<button
 				onClick={() => setOpen(!open)}
-				className="flex gap-1 items-center text-primary font-semibold cursor-pointer font-lexend-deca"
+				className="flex gap-1 items-center text-primary font-semibold cursor-pointer font-lexend-deca text-sm"
 			>
 				{title}
 				<div
@@ -38,7 +38,7 @@ export default function DropdownMenu({ title, items, perfil }: any) {
 
 			{open && (
 				<div
-					className={`absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow ${
+					className={`absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow min-w-40 ${
 						['aluno', 'professor'].includes(perfil) && 'w-80'
 					}`}
 				>

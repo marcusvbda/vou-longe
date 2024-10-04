@@ -5,7 +5,7 @@ import AspectRatio from './aspectRatio';
 import { ThemeContext } from '@/app/context/themeContext';
 
 export default function Carousel() {
-	const { site } = useContext(ThemeContext);
+	const { site, screenFormat } = useContext(ThemeContext);
 	const [slides] = useState(
 		(site?.acf?.itens_carousel_home || '')
 			.split('\r\n')
@@ -27,18 +27,16 @@ export default function Carousel() {
 		);
 	};
 
-	// Lógica para mudança automática de slides a cada 5 segundos
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			nextSlide();
-		}, 5000); // Muda automaticamente a cada 5 segundos
+		}, 5000);
 
-		// Cleanup para remover o intervalo quando o componente desmontar
 		return () => clearInterval(intervalId);
 	}, [currentSlide, slides.length]);
 
 	return (
-		<div className="relative w-full h-[634px] mb-8 top-[-130px]">
+		<div className="relative w-full h-[350px] md:h-[634px] mb-8 top-4 md:top-[-130px]">
 			<div className="overflow-hidden h-full w-full">
 				<div
 					className="flex h-full transition-transform duration-500 ease-in-out"
@@ -47,35 +45,35 @@ export default function Carousel() {
 					{slides.map((slide: any, index: any) => (
 						<div
 							key={index}
-							className="w-full h-full flex-shrink-0 px-4 rounded-[50px]"
+							className="w-full h-full flex-shrink-0 px-1 md:px-4 rounded-[50px]"
 							style={{
 								backgroundImage: `url(${slide[0]})`,
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 							}}
 						>
-							<div className="w-full flex h-full items-center justify-between">
+							<div className="w-full flex h-full items-center justify-between relative">
 								<button
 									onClick={prevSlide}
-									className="cursor-pointer hover:opacity-70 transition duration-300"
+									className="cursor-pointer hover:opacity-70 transition duration-300 absolute"
 								>
 									<AspectRatio
 										src="/assets/images/arrow-btn-prev.svg"
 										alt="Previous"
-										size={{ width: 50 }}
+										size={{ width: screenFormat === 'mobile' ? 40 : 50 }}
 									/>
 								</button>
-								<div className="w-full flex px-20">
+								<div className="w-full h-full flex items-start md:items-center px-10 md:px-20">
 									<div className="w-full md:w-7/12 flex flex-col">
 										{slide[1] && (
 											<h1
-												className="text-6xl font-semibold mt-10 md:mt-0 font-lexend-deca"
+												className="text-2xl md:text-6xl font-semibold mt-10 md:mt-0 font-lexend-deca text-center md:text-left"
 												dangerouslySetInnerHTML={{ __html: slide[1] }}
 											/>
 										)}
 										{slide[2] && (
 											<div
-												className="mt-4"
+												className="mt-4 text-center md:text-left"
 												dangerouslySetInnerHTML={{ __html: slide[2] }}
 											/>
 										)}
@@ -83,12 +81,12 @@ export default function Carousel() {
 								</div>
 								<button
 									onClick={nextSlide}
-									className="cursor-pointer hover:opacity-70 transition duration-300"
+									className="cursor-pointer hover:opacity-70 transition duration-300 absolute right-0"
 								>
 									<AspectRatio
 										src="/assets/images/arrow-btn-next.svg"
 										alt="Next"
-										size={{ width: 50 }}
+										size={{ width: screenFormat === 'mobile' ? 40 : 50 }}
 									/>
 								</button>
 							</div>

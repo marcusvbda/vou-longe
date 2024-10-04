@@ -1,15 +1,16 @@
 'use client';
+import { ThemeContext } from '@/app/context/themeContext';
 import AspectRatio from '@/components/aspectRatio';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
 export default function Fragment({ year, matriz, content }: any) {
 	return (
 		<>
 			<div className="p-2 md:py-6 md:px-8">
-				<div className="w-full rounded-2xl flex flex-col p-4 items-center">
+				<div className="w-full rounded-2xl flex flex-col items-center">
 					<Navbar />
 				</div>
 				<div className="w-full flex flex-col items-center mb-20">
@@ -23,20 +24,26 @@ export default function Fragment({ year, matriz, content }: any) {
 
 const Content = ({ year, matriz, content }: any) => {
 	const splited = content?.acf?.conteudo.split('|');
+	const { screenFormat } = useContext(ThemeContext);
 
 	return (
-		<div className="px-8 md:px-20 w-full">
+		<div className="px-2 md:px-20 w-full">
 			<div className="w-full flex flex-col items-center mb-20">
 				<div className="w-full flex flex-col gap-4 mt-8 mb-10 ">
-					<div className="w-full flex justify-between items-center flex-col md:flex-row">
-						<h1 className="text-3xl font-semibold text-neutral-700 mt-8 text-center text-primary">
+					<div className="w-full flex justify-between items-center gap-2">
+						<h1 className="w-full  text-xl md:text-3xl font-semibold text-neutral-700 mt-0 md:mt-8 text-left md:text-center text-primary">
 							{splited[0]}
 						</h1>
 						<Link
 							href={`/ano/${year}/matriz/${matriz?.acf?.slug}`}
-							className="ml-auto cursor-pointer bg-primary text-white px-6 py-2 rounded-lg items-center justify-center flex gap-2"
+							className="ml-auto text-sm cursor-pointer bg-primary text-white px-4 md:px-6 py-2 rounded-lg items-center justify-center flex gap-2"
 						>
-							<svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+							<svg
+								width={screenFormat === 'mobile' ? '20' : '32'}
+								height={screenFormat === 'mobile' ? '20' : '32'}
+								viewBox="0 0 32 32"
+								fill="none"
+							>
 								<path
 									d="M6.66699 15.9997H25.3337"
 									stroke="white"

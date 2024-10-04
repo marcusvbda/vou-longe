@@ -14,12 +14,12 @@ export default function Home() {
 
 	return (
 		<>
-			<div className="p-2 md:py-6 md:px-8">
-				<div className="w-full flex flex-col p-4 items-center">
+			<div className="md:py-6 md:px-8">
+				<div className="w-full flex flex-col p-2 md:p-4 items-center">
 					<Navbar />
 					<Carousel />
 				</div>
-				<div className="w-full flex relative -top-24 flex-col">
+				<div className="w-full flex relative mb-10 md:-top-24 flex-col">
 					{['aluno', 'professor'].includes(perfil) && <AlunoProfessorContent />}
 					{perfil === 'gestor' && <GestorContent />}
 				</div>
@@ -59,19 +59,21 @@ const GestorContent = () => {
 									Nenhum tipo de ano encontrado
 								</div>
 							)}
-							{menus.map((menu: any, key: any) => (
-								<button
-									key={key}
-									onClick={() => setSeleted(key)}
-									className={`btn px-4 py-2 rounded-full font-lexend-deca ${
-										selected === key
-											? 'bg-secondary text-white'
-											: 'text-secondary'
-									}`}
-								>
-									{menu.title}
-								</button>
-							))}
+							{menus
+								.filter((x: any) => !['Avaliações'].includes(x.title))
+								.map((menu: any, key: any) => (
+									<button
+										key={key}
+										onClick={() => setSeleted(key)}
+										className={`btn px-4 py-2 rounded-full font-lexend-deca text-sm ${
+											selected === key
+												? 'bg-secondary text-white'
+												: 'text-secondary'
+										}`}
+									>
+										{menu.title}
+									</button>
+								))}
 						</div>
 						<div
 							className="w-full flex gap-8 wrap justify-center items-center"
@@ -85,7 +87,6 @@ const GestorContent = () => {
 									href={item[2]}
 									key={index}
 									className="w-full md:w-[340px] h-[240px] flex p-4 border border-gray-100 rounded-2xl"
-									style={{ maxWidth: '340px' }}
 								>
 									<div
 										className="p-4 w-full text-white font-concert-one rounded-2xl text-center flex font-semibold items-center justify-center text-3xl"
@@ -137,7 +138,7 @@ const AlunoProfessorContent = () => {
 						className="w-full flex gap-8 wrap justify-center items-center relative"
 						style={{ flexWrap: 'wrap' }}
 					>
-						<div className="w-[40px] absolute right-60 top-40">
+						<div className="w-[40px] absolute right-10 md:right-60 top-40">
 							<svg className="w-full" viewBox="0 0 71 98" fill="none">
 								<path
 									d="M46.2257 34.8751C46.2257 28.7691 41.2716 23.8208 35.1685 23.8208C29.0613 23.8208 24.1113 28.7691 24.1113 34.8751C24.1113 39.0214 26.3957 42.6275 29.7719 44.5211L30.0015 37.1856C30.0015 34.1843 32.4363 31.7495 35.4405 31.7495H35.7491C38.115 31.7495 40.0328 33.6669 40.0328 36.0331V44.793C43.6934 42.9944 46.2257 39.2323 46.2257 34.8751Z"
@@ -165,7 +166,6 @@ const AlunoProfessorContent = () => {
 								href={`/ano/${anoDoAluno}?area=${item?.acf?.nome_da_area}`}
 								key={index}
 								className="w-full md:w-[340px] h-[240px] flex p-4 border border-gray-100 rounded-2xl"
-								style={{ maxWidth: '340px' }}
 							>
 								<div
 									className="p-4 w-full text-white font-concert-one rounded-2xl text-center flex font-semibold items-center justify-center text-3xl"

@@ -1,6 +1,8 @@
 'use client';
 
 import { GlobalContext } from '@/app/context/globalContext';
+import { ThemeContext } from '@/app/context/themeContext';
+import AspectRatio from '@/components/aspectRatio';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
@@ -8,6 +10,8 @@ import { useContext, useState } from 'react';
 
 export default function Fragment({ options, year, matriz }: any) {
 	const { perfil } = useContext(GlobalContext);
+	const { screenFormat } = useContext(ThemeContext);
+
 	let defaultState = [
 		'Acomp. de Simulados',
 		'Atividades Extras',
@@ -38,46 +42,56 @@ export default function Fragment({ options, year, matriz }: any) {
 	return (
 		<>
 			<div className="p-2 md:py-6 md:px-8">
-				<div className="w-full rounded-2xl flex flex-col p-4 items-center">
+				<div className="w-full rounded-2xl flex flex-col items-center">
 					<Navbar />
 				</div>
 				<div className="w-full flex flex-col items-center mb-20">
-					<div className="px-8 md:px-20 w-full">
+					<div className="px-2 md:px-20 w-full">
 						<div className="flex w-full md:w-auto">
-							<div className="mt-8 w-full md:w-auto border-t border-b border-gray-300 py-2 flex text-neutral-500 text-sm items-center flex-wrap gap-2">
-								<Link href="/" className="flex gap-2 items-center">
-									<img src="/assets/images/home.svg" />
+							<div className="mt-4 md:mt-8 w-full md:w-auto border-t border-b border-gray-300 py-2 flex text-neutral-500 text-sm items-center flex-wrap gap-2">
+								<Link
+									href="/"
+									className="flex gap-2 items-center text-xs md:text-sm"
+								>
+									<AspectRatio
+										src="/assets/images/home.svg"
+										size={{ width: 18 }}
+										className="mr-1"
+									/>
 									Página Inicial
 								</Link>
-								<Link href={`/ano/${year}`} className="flex items-center gap-2">
+								<Link
+									href={`/ano/${year}`}
+									className="flex items-center gap-2 text-xs md:text-sm"
+								>
 									<img
 										src="/assets/images/breadcrumb-arrow.svg"
-										className="mx-2"
+										className="mx-1"
 									/>
 									<div>Area de conhecimento</div>
 								</Link>
 								<img
 									src="/assets/images/breadcrumb-arrow.svg"
-									className="mx-2"
+									className="mx-1"
 								/>
-								<div>{matriz?.acf?.nome}</div>
+								<div className="text-xs md:text-sm">{matriz?.acf?.nome}</div>
 								<img
 									src="/assets/images/breadcrumb-arrow.svg"
-									className="mx-2"
+									className="mx-1"
 								/>
-								<div className="text-primary font-semibold">
+								<div className="text-primary font-semibold text-xs md:text-sm">
 									{(type || '') as any}
 								</div>
 							</div>
 						</div>
-						<div className="w-full flex flex-col items-center mb-20">
-							<div className="w-full flex flex-col md:flex-row gap-4 mt-8 mb-10 ">
-								<div className="w-full md:w-3/12 flex flex-row md:flex-col gap-4 md:gap-2 flex-wrap justify-center md:justify-start">
+						<div className="w-full flex flex-col items-center mb-20 mt-0 md:mt-8">
+							<div className="w-full flex flex-col md:flex-row gap-4">
+								<div className="w-full md:w-3/12 flex mt-8 md:mt-0 flex-row md:flex-col gap-2 md:gap-2 flex-wrap justify-center md:justify-start">
 									{(types || []).map((item: any, key: any) => (
 										<button
 											onClick={() => handleClick(item)}
 											key={key}
-											className={`cursor-pointer text-left transition-all hover:opacity-100 text-thin duration-300 hover:bg-primary-100 rounded-lg px-4 py-1 ${
+											className={`w-full text-sm md:w-auto cursor-pointer text-left transition-all hover:opacity-100 text-thin duration-300 hover:bg-primary-100 rounded-lg px-4 py-2 ${
 												item === type
 													? 'text-primary font-semibold bg-primary-100'
 													: 'text-tertiary opacity-60'
@@ -86,14 +100,14 @@ export default function Fragment({ options, year, matriz }: any) {
 											{item}
 										</button>
 									))}
-									<div className="flex flex-row gap-4 items-center mt-2">
+									<div className="flex flex-row gap-4 items-center mt-1 md:mt-2">
 										<Link
 											href={`/ano/${year}`}
-											className="cursor-pointer bg-primary text-white px-6 py-2 rounded-lg items-center justify-center flex gap-2"
+											className="cursor-pointer text-sm bg-primary text-white px-4 md:px-6 py-2 rounded-lg items-center justify-center flex gap-2"
 										>
 											<svg
-												width="32"
-												height="32"
+												width={screenFormat === 'mobile' ? '20' : '32'}
+												height={screenFormat === 'mobile' ? '20' : '32'}
 												viewBox="0 0 32 32"
 												fill="none"
 											>
@@ -124,10 +138,10 @@ export default function Fragment({ options, year, matriz }: any) {
 									</div>
 								</div>
 								<div
-									className="w-full flex gap-8 wrap relative"
+									className="w-full flex gap-8 wrap relative mt-8 md:mt-0"
 									style={{ flexWrap: 'wrap' }}
 								>
-									<div className="w-[40px] absolute right-60 top-40">
+									<div className="w-[40px] absolute right-10 md:right-60 top-10 md:top-40">
 										<svg className="w-full" viewBox="0 0 71 98" fill="none">
 											<path
 												d="M46.2257 34.8751C46.2257 28.7691 41.2716 23.8208 35.1685 23.8208C29.0613 23.8208 24.1113 28.7691 24.1113 34.8751C24.1113 39.0214 26.3957 42.6275 29.7719 44.5211L30.0015 37.1856C30.0015 34.1843 32.4363 31.7495 35.4405 31.7495H35.7491C38.115 31.7495 40.0328 33.6669 40.0328 36.0331V44.793C43.6934 42.9944 46.2257 39.2323 46.2257 34.8751Z"
@@ -159,11 +173,11 @@ export default function Fragment({ options, year, matriz }: any) {
 											<Link
 												href={`/ano/${year}/matriz/${matriz?.acf?.slug}/conteudo/${item?.id}`}
 												key={index}
-												className="w-full md:w-6/12 flex p-4  border border-gray-100 rounded-2xl flex-col gap-2"
-												style={{ maxWidth: '432px', height: 'fit-content' }}
+												className="w-full md:w-[340px] flex p-4  border border-gray-100 rounded-2xl flex-col gap-2"
+												style={{ height: 'fit-content' }}
 											>
 												<div
-													className="rounded-2xl h-[250px] p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
+													className="rounded-2xl h-[200px] p-4 w-full text-white text-center flex font-semibold items-center justify-center text-3xl"
 													style={{
 														backgroundImage: `url(${
 															item?.acf?.thumbnail || ''

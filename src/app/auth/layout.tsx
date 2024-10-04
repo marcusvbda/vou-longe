@@ -8,14 +8,15 @@ export default function AuthTemplate({ children }: any) {
 
 	return (
 		<div
-			className="w-full h-full items-center justify-center flex"
+			className="w-full items-center justify-center flex"
 			style={{
 				backgroundImage: `url(${site?.acf?.login_background || ''})`,
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat',
+				height: '100vh',
 			}}
 		>
-			<div className="w-full max-w-[556px] p-6 mb-[400px] overflow-y-auto">
+			<div className="w-full max-w-[556px] p-3 md:p-6 overflow-y-auto self-start">
 				{children}
 			</div>
 		</div>

@@ -9,7 +9,7 @@ import { ThemeContext } from '@/app/context/themeContext';
 
 export default function Login() {
 	const [initialized, setInitialized] = useState(false);
-	const { site } = useContext(ThemeContext);
+	const { site, screenFormat } = useContext(ThemeContext);
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 	const [form, setForm] = useState({
@@ -43,8 +43,11 @@ export default function Login() {
 
 	return (
 		<div className="bg-white p-6 flex item-center justify-center rounded-xl flex-col mt-10">
-			<div className="bg-secondary rounded-xl max-w-[362px] py-8 px-10 flex items-center justify-center self-center relative -top-12">
-				<AspectRatio src={site?.acf?.logo_login} size={{ height: 48 }} />
+			<div className="bg-secondary rounded-xl w-full max-w-[362px] px-4 py-8 md:px-10 flex items-center justify-center self-center relative -top-12">
+				<AspectRatio
+					src={site?.acf?.logo_login}
+					size={{ height: screenFormat === 'mobile' ? 30 : 48 }}
+				/>
 			</div>
 
 			<form onSubmit={(e: any) => onSubmitHandler(e)}>
