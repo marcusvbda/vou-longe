@@ -15,7 +15,7 @@ export default function AuthTemplate({ children }: any) {
 				backgroundRepeat: 'no-repeat',
 			}}
 		>
-			<div className="w-full max-w-[556px] p-6 mb-[300px] overflow-y-auto">
+			<div className="w-full max-w-[556px] p-6 mb-[400px] overflow-y-auto">
 				{children}
 			</div>
 		</div>
