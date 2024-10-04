@@ -1,12 +1,14 @@
 'use client';
 
+import { GlobalContext } from '@/app/context/globalContext';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 export default function Fragment({ options, year, matriz }: any) {
-	const [types] = useState([
+	const { perfil } = useContext(GlobalContext);
+	let defaultState = [
 		'Acomp. de Simulados',
 		'Atividades Extras',
 		'Áudios',
@@ -18,7 +20,14 @@ export default function Fragment({ options, year, matriz }: any) {
 		'Simulados',
 		'Trilhas Gamificadas',
 		'Videos',
-	]);
+	];
+
+	const [types] = useState(
+		defaultState.filter((x: any) =>
+			perfil === 'aluno' ? !['Avaliações'].includes(x) : true
+		)
+	);
+
 	const [type, setType] = useState(
 		Array.from(new Set(options?.map((x: any) => x?.acf?.tipo)))[0] || types[0]
 	);

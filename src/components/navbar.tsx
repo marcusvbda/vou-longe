@@ -50,7 +50,15 @@ export default function Navbar() {
 						return item;
 					});
 
-					const menuItems = filteredWithMatriz.map((x: any) => [
+					const uniqueMatriz = filteredWithMatriz.filter(
+						(value: any, index: number, self: any) =>
+							index ===
+							self.findIndex(
+								(t: any) => t?.matriz?.acf?.nome === value?.matriz?.acf?.nome
+							)
+					);
+
+					const menuItems = uniqueMatriz.map((x: any) => [
 						x?.matriz?.acf?.nome,
 						x?.matriz?.acf?.descricao,
 						`/ano/${anoDoAluno}?area=${x?.matriz?.area?.acf?.nome_da_area}`,
