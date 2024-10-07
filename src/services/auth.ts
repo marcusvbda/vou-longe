@@ -28,14 +28,16 @@ export const login = async (form: any) => {
 		if (!result?.Identificacao) {
 			return { success: false, message: 'Credenciais inválidas' };
 		}
-
+		console.log(
+			result?.Sistemas.map((x: any) => x?.ComponenteCurricular)
+				.filter((x: any) => x)
+				.map(parseInt)
+		);
 		const token = {
 			Identificacao: result?.Identificacao,
-			anoEscolar: parseInt(
-				result?.Sistemas?.find(
-					(x: any) => x?.Produto === 'Vou + longe' && x?.ComponenteCurricular
-				)?.ComponenteCurricular
-			),
+			anoEscolar: result?.Sistemas.map((x: any) => x?.ComponenteCurricular)
+				.filter((x: any) => x)
+				.map(parseInt),
 		};
 
 		let payload: any = {

@@ -21,7 +21,6 @@ export default async function MatrizPage({ params }: any) {
 		perfil = 'aluno';
 	}
 
-	const { anoEscolar } = await getSession();
 	const { ano, matriz, conteudo } = params;
 	const foundConteudo = await findPost('conteudo', 'id', conteudo);
 	if (!foundConteudo?.id) return notFound();
@@ -31,12 +30,17 @@ export default async function MatrizPage({ params }: any) {
 		foundConteudo?.acf?.matriz
 	);
 	if (foundMatriz?.acf?.slug !== matriz) return notFound();
-
+	const anoSplited = decodeURIComponent(ano).split(',').map(String);
 	const anos: any = (foundConteudo?.acf?.anos_que_podem_acessar || '').split(
 		','
 	);
+	const hasCommonItem = anos.some((ano: string) => anoSplited.includes(ano));
+	const anosConteudo = String(session.anoEscolar).split(',').map(String);
+	const anosHasCommonItem = anos.some((ano: string) =>
+		anosConteudo.includes(ano)
+	);
 
-	if (!(anos.includes(String(ano)) || anos.includes(String(anoEscolar)))) {
+	if (!hasCommonItem || !anosHasCommonItem) {
 		return notFound();
 	}
 
@@ -44,5 +48,11 @@ export default async function MatrizPage({ params }: any) {
 		return notFound();
 	}
 
-	return <Fragment matriz={foundMatriz} year={ano} content={foundConteudo} />;
+	return (
+		<Fragment
+			matriz={foundMatriz}
+			year={decodeURIComponent(ano)}
+			content={foundConteudo}
+		/>
+	);
 }

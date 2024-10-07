@@ -28,12 +28,17 @@ export default async function MatrizPage({ params }: any) {
 		(x: any) => x?.acf?.slug === matriz
 	);
 	if (!foundMatriz?.id) return notFound();
+	const anoSplited = decodeURIComponent(ano).split(',').map(String);
+
 	const options = (conteudos?.items || []).filter((x: any) => {
 		const anos = (x?.acf?.anos_que_podem_acessar || '').split(',');
+
+		const hasCommonItem = anos.some((ano: string) => anoSplited.includes(ano));
+
 		if (perfil === 'gestor') {
 			return (
 				x?.acf?.matriz.map(String).includes(String(foundMatriz?.id)) &&
-				anos.includes(String(ano))
+				hasCommonItem
 			);
 		}
 
@@ -41,7 +46,7 @@ export default async function MatrizPage({ params }: any) {
 			return (
 				x?.acf?.matriz.map(String).includes(String(foundMatriz?.id)) &&
 				x?.acf?.acesso === perfil &&
-				anos.includes(String(ano))
+				hasCommonItem
 			);
 		}
 	});
@@ -49,5 +54,11 @@ export default async function MatrizPage({ params }: any) {
 	if (!options?.length) {
 		return notFound();
 	}
-	return <Fragment options={options} year={ano} matriz={foundMatriz} />;
+	return (
+		<Fragment
+			options={options}
+			year={decodeURIComponent(ano)}
+			matriz={foundMatriz}
+		/>
+	);
 }

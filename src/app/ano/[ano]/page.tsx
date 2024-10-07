@@ -22,12 +22,19 @@ export default async function AnoPage({ params }: any) {
 		perfil = 'aluno';
 	}
 	const matrizes = await getPosts('matriz');
+	const anoSplited = decodeURIComponent(ano).split(',').map(String);
+	const anosConteudo = String(session.anoEscolar).split(',').map(String);
 	const options = (areas?.items || []).filter((x: any) => {
 		const anos = (x?.acf?.anos_que_possuem_acesso || '').split(',');
+		const hasCommonItem = anos.some((ano: string) =>
+			anosConteudo.includes(ano)
+		);
+		const anosHasCommonItem = anos.some((ano: string) =>
+			anoSplited.includes(ano)
+		);
 		return (
-			anos.includes(String(ano)) &&
-			(anos.includes(String(session.anoEscolar)) ||
-				['gestor', 'professor'].includes(perfil))
+			anosHasCommonItem &&
+			(hasCommonItem || ['gestor', 'professor'].includes(perfil))
 		);
 	});
 	if (!options?.length) return notFound();
@@ -43,5 +50,5 @@ export default async function AnoPage({ params }: any) {
 				.map((x: any) => [x?.acf?.nome, x.acf?.slug]),
 		});
 	}
-	return <Fragment options={_options} year={ano} />;
+	return <Fragment options={_options} year={decodeURIComponent(ano)} />;
 }
