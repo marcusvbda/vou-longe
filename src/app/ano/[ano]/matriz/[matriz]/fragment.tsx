@@ -171,7 +171,16 @@ export default function Fragment({ options, year, matriz }: any) {
 										.filter((x: any) => x?.acf?.tipo === type)
 										.map((item: any, index: any) => (
 											<Link
-												href={`/ano/${year}/matriz/${matriz?.acf?.slug}/conteudo/${item?.id}`}
+												href={
+													item?.acf?.apresentacao === 'link de acesso'
+														? item?.acf?.conteudo.split('|')[1]
+														: `/ano/${year}/matriz/${matriz?.acf?.slug}/conteudo/${item?.id}`
+												}
+												target={
+													item?.acf?.apresentacao === 'link de acesso'
+														? '_blank'
+														: ''
+												}
 												key={index}
 												className="w-full md:w-[340px] flex p-4  border border-gray-100 rounded-2xl flex-col gap-2"
 												style={{ height: 'fit-content' }}
