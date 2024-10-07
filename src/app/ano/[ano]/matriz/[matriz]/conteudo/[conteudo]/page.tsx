@@ -40,7 +40,7 @@ export default async function MatrizPage({ params }: any) {
 		anosConteudo.includes(ano)
 	);
 
-	if (!hasCommonItem || !anosHasCommonItem) {
+	if (!hasCommonItem) {
 		return notFound();
 	}
 

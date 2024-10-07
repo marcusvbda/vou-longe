@@ -1,4 +1,4 @@
-import { findPost, getPosts } from '@/services/wordpress';
+import { getPosts } from '@/services/wordpress';
 import { notFound } from 'next/navigation';
 import Fragment from './fragment';
 import { getSession } from '@/services/auth';

@@ -2,108 +2,14 @@
 
 import Link from 'next/link';
 import AspectRatio from './aspectRatio';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useMemo } from 'react';
 import { GlobalContext } from '@/app/context/globalContext';
 import { ThemeContext } from '@/app/context/themeContext';
-import { getPosts } from '@/services/wordpress';
 import DropdownMenu from './DropdownMenu';
-import { menuGestor } from '@/app/constants/gestor';
 
 export default function Navbar() {
-	const { site, screenFormat } = useContext(ThemeContext);
+	const { site, screenFormat, menus } = useContext(ThemeContext);
 	const { perfil, session, anoDoAluno } = useContext(GlobalContext);
-	const [loadingMenu, setLoadingMenu] = useState(true);
-	const [menus, setMenus] = useState<any>([]);
-
-	useEffect(() => {
-		let isMounted = true;
-
-		const getMenus = async () => {
-			setLoadingMenu(true);
-			try {
-				const areas = await getPosts('area-de-conhecimento');
-				const matrizes = await getPosts('matriz');
-				if (['aluno', 'professor'].includes(perfil)) {
-					const conteudos: any = await getPosts('conteudo');
-					const filtered = (conteudos?.items || [])
-						.filter((x: any) => x?.acf?.acesso === 'aluno')
-						.filter((x: any) => {
-							const anos = (x?.acf?.anos_que_podem_acessar || '')
-								.split(',')
-								.map(String);
-							return anos.includes(String(anoDoAluno));
-						});
-
-					const filteredWithMatriz = filtered.map((item: any) => {
-						const matrizId = item?.acf?.matriz?.[0];
-						const matriz = (matrizes?.items || []).find(
-							(m: any) => m.id === matrizId
-						);
-
-						if (matriz) {
-							matriz.area = areas?.items?.find((a: any) =>
-								a?.acf?.matrizes.includes(matriz.id)
-							);
-							item.matriz = matriz;
-						}
-
-						return item;
-					});
-
-					const uniqueMatriz = filteredWithMatriz.filter(
-						(value: any, index: number, self: any) =>
-							index ===
-							self.findIndex(
-								(t: any) => t?.matriz?.acf?.nome === value?.matriz?.acf?.nome
-							)
-					);
-
-					let menuItems = uniqueMatriz.map((x: any) => [
-						x?.matriz?.area?.acf?.nome_da_area,
-						x?.matriz?.area?.acf?.descricao,
-						`/ano/${anoDoAluno}?area=${x?.matriz?.area?.acf?.nome_da_area}`,
-						x?.matriz?.acf?.icon,
-					]);
-
-					if (isMounted) {
-						const newMenus: any = [
-							{
-								tipo: 'menu',
-								title: 'Areas de Conhecimento',
-								items: menuItems,
-							},
-						];
-
-						if (perfil === 'professor') {
-							newMenus.push({
-								tipo: 'link',
-								title: 'Avaliações',
-								url: 'https://avaliacoesaprendebrasil.homolog.local/',
-							});
-						}
-
-						setMenus(newMenus);
-					}
-				}
-
-				if (perfil === 'gestor' && isMounted) {
-					setMenus(menuGestor);
-				}
-			} catch (error) {
-				console.error('Erro ao carregar os menus:', error);
-			} finally {
-				if (isMounted) {
-					setLoadingMenu(false);
-				}
-			}
-		};
-
-		getMenus();
-
-		return () => {
-			isMounted = false;
-		};
-	}, [perfil, anoDoAluno]);
 
 	const firstName = useMemo(() => {
 		const name = session?.Identificacao?.[0]?.Nome || 'Anónimo';
@@ -125,7 +31,7 @@ export default function Navbar() {
 				</Link>
 				<div className="flex items-end md:items-center gap-4 flex-1 flex-col md:flex-row">
 					<ItemsMenu
-						loadingMenu={loadingMenu}
+						loadingMenu={false}
 						menus={menus}
 						perfil={perfil}
 						className="items-center justify-center gap-2 hidden md:flex wrap"
@@ -149,7 +55,7 @@ export default function Navbar() {
 				</div>
 			</div>
 			<ItemsMenu
-				loadingMenu={loadingMenu}
+				loadingMenu={false}
 				menus={menus}
 				perfil={perfil}
 				className="items-center justify-center flex md:hidden gap-2 wrap"

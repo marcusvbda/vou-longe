@@ -4,7 +4,11 @@ import { ReactNode, createContext, useEffect, useState } from 'react';
 
 export const ThemeContext = createContext<any>({});
 
-export const ThemeContextProvider = ({ children, site }: any): ReactNode => {
+export const ThemeContextProvider = ({
+	children,
+	site,
+	menus,
+}: any): ReactNode => {
 	const [screenFormat, setScreenFormat] = useState('desktop');
 
 	useEffect(() => {
@@ -20,7 +24,7 @@ export const ThemeContextProvider = ({ children, site }: any): ReactNode => {
 	}, []);
 
 	return (
-		<ThemeContext.Provider value={{ site, screenFormat }}>
+		<ThemeContext.Provider value={{ site, screenFormat, menus }}>
 			{children}
 		</ThemeContext.Provider>
 	);
