@@ -36,7 +36,7 @@ export default function Login() {
 			});
 			setLoading(false);
 		}
-		router.push('/');
+		router.push('/portal');
 	};
 
 	if (!initialized) return <></>;

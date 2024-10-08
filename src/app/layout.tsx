@@ -17,8 +17,9 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: any) {
 	const [session, site] = await Promise.all([getSession(), getSite()]);
-
+	console.log(session);
 	const getMenus = async () => {
+		if (!session) return [];
 		let perfil;
 		let menus = [];
 		const anoDoAluno = (session?.anoEscolar || []).join(',');

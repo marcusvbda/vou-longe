@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import AspectRatio from './aspectRatio';
-import Link from 'next/link';
 
 export default function DropdownMenu({ title, items, perfil }: any) {
 	const [open, setOpen] = useState(false);
@@ -45,8 +44,8 @@ export default function DropdownMenu({ title, items, perfil }: any) {
 					<ul className="py-2 text-sm text-gray-700">
 						{items.map((item: any, index: any) => (
 							<li key={index} className="relative">
-								<Link
-									href={item[2]}
+								<a
+									href={`/portal/${item[2]}`}
 									className={`px-4 py-2 text-neutral-900 hover:bg-gray-100 items-start w-full flex gap-4 ${
 										!item[1] && 'items-center'
 									}`}
@@ -67,7 +66,7 @@ export default function DropdownMenu({ title, items, perfil }: any) {
 											<small className="text-xs text-black/40">{item[1]}</small>
 										)}
 									</div>
-								</Link>
+								</a>
 							</li>
 						))}
 					</ul>

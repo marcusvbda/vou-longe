@@ -1,7 +1,7 @@
 'use client';
 
+import { ThemeContext } from '@/app/context/themeContext';
 import { useContext } from 'react';
-import { ThemeContext } from '../context/themeContext';
 
 export default function AuthTemplate({ children }: any) {
 	const { site } = useContext(ThemeContext);

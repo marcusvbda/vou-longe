@@ -47,7 +47,7 @@ export default function Footer() {
 					<Link
 						href={linkQuero?.[1] || '#'}
 						target="_blank"
-						className="cursor-pointer bg-primary text-white px-6 py-4 rounded-lg md:text-lg w-full flex justify-center items-center text-sm"
+						className="cursor-pointer bg-primary text-white px-6 py-4 rounded-xl md:text-lg w-full flex justify-center items-center text-sm"
 					>
 						{linkQuero[0]}
 					</Link>

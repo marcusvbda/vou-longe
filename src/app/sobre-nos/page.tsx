@@ -1,7 +1,7 @@
 import Footer from '@/components/footer';
 import PublicNavbar from '@/components/PublicNavbar';
 
-export default function HomePage() {
+export default function AboutPage() {
 	return (
 		<>
 			<div className="md:py-6 md:px-8">

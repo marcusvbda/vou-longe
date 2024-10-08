@@ -35,7 +35,7 @@ const Content = ({ year, matriz, content }: any) => {
 							{splited[0]}
 						</h1>
 						<Link
-							href={`/ano/${year}/matriz/${matriz?.acf?.slug}`}
+							href={`/portal/ano/${year}/matriz/${matriz?.acf?.slug}`}
 							className="ml-auto text-sm cursor-pointer bg-primary text-white px-4 md:px-6 py-2 rounded-lg items-center justify-center flex gap-2"
 						>
 							<svg

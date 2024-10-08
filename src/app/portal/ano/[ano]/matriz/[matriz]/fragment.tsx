@@ -50,7 +50,7 @@ export default function Fragment({ options, year, matriz }: any) {
 						<div className="flex w-full md:w-auto">
 							<div className="mt-4 md:mt-8 w-full md:w-auto border-t border-b border-gray-300 py-2 flex text-neutral-500 text-sm items-center flex-wrap gap-2">
 								<Link
-									href="/"
+									href="/portal"
 									className="flex gap-2 items-center text-xs md:text-sm"
 								>
 									<AspectRatio
@@ -61,7 +61,7 @@ export default function Fragment({ options, year, matriz }: any) {
 									Página Inicial
 								</Link>
 								<Link
-									href={`/ano/${year}`}
+									href={`/portal/ano/${year}`}
 									className="flex items-center gap-2 text-xs md:text-sm"
 								>
 									<img
@@ -102,7 +102,7 @@ export default function Fragment({ options, year, matriz }: any) {
 									))}
 									<div className="flex flex-row gap-4 items-center mt-1 md:mt-2">
 										<Link
-											href={`/ano/${year}`}
+											href={`/portal/ano/${year}`}
 											className="cursor-pointer text-sm bg-primary text-white px-4 md:px-6 py-2 rounded-lg items-center justify-center flex gap-2"
 										>
 											<svg
@@ -174,7 +174,7 @@ export default function Fragment({ options, year, matriz }: any) {
 												href={
 													item?.acf?.apresentacao === 'link de acesso'
 														? item?.acf?.conteudo.split('|')[1]
-														: `/ano/${year}/matriz/${matriz?.acf?.slug}/conteudo/${item?.id}`
+														: `/portal/ano/${year}/matriz/${matriz?.acf?.slug}/conteudo/${item?.id}`
 												}
 												target={
 													item?.acf?.apresentacao === 'link de acesso'

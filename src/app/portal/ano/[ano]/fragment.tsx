@@ -33,7 +33,7 @@ export default function Fragment({ options, year }: any) {
 						<div className="flex w-full md:w-auto">
 							<div className="mt-4 md:mt-8 w-full md:w-auto border-t border-b border-gray-300 py-2 flex text-neutral-500 text-sm items-center flex-wrap gap-2">
 								<Link
-									href="/"
+									href="/portal"
 									className="flex gap-2 items-center text-xs md:text-sm"
 								>
 									<AspectRatio
@@ -95,7 +95,7 @@ export default function Fragment({ options, year }: any) {
 									</div>
 									{options[selected].items.map((item: any, index: any) => (
 										<Link
-											href={`/ano/${year}/matriz/${item[1]}`}
+											href={`/portal/ano/${year}/matriz/${item[1]}`}
 											key={index}
 											className="w-full md:w-[340px] h-[240px] flex p-4  border border-gray-100 rounded-2xl"
 										>
