@@ -235,9 +235,51 @@ const Banner4 = ({ site }: any) => {
 	);
 };
 
+const FooterBanner = ({ site }: any) => {
+	return (
+		<div className="hidden w-full md:flex flex-col md:flex-row gap-2 px-12 overflow-hidden py-10 items-center">
+			<div
+				className="flex flex-col md:flex-row bg-cover bg-center bg-no-repeat w-full rounded-3xl px-10"
+				style={{
+					backgroundImage: `url(${site?.acf?.banner_footer_publico_bg || ''})`,
+				}}
+			>
+				<div className="w-full md:w-7/12 flex items-start flex-col gap-4 justify-end">
+					<h4 className="text-2xl text-white">
+						{site?.acf?.banner_footer_publico_titulo || ''}
+					</h4>
+					<div className="text-white/70">
+						{site?.acf?.banner_footer_publico_descricao || ''}
+					</div>
+					<div className="flex flex-col md:flex-row gap-2 px-0 my-10 w-auto">
+						<div>
+							<Link
+								href={site?.acf?.banner_footer_publico_comece_agora_url || '#'}
+								className="cursor-pointer px-4 bg-white text-primary p-3 rounded-xl w-full flex justify-center items-center text-sm"
+							>
+								Comece agora
+							</Link>
+						</div>
+						<div>
+							<Link
+								href={site?.acf?.banner_footer_publico_saiba_mais_url || '#'}
+								className="cursor-pointer border px-4 text-white border-white p-3 rounded-xl w-full flex justify-center items-center text-sm"
+							>
+								Saiba mais
+							</Link>
+						</div>
+					</div>
+				</div>
+				<div className="w-full md:w-5/12">
+					<img src={site?.acf?.banner_footer_publico || ''} />
+				</div>
+			</div>
+		</div>
+	);
+};
+
 export default async function HomePage() {
 	const site = await getSite();
-	console.log(site?.acf?.banner_4);
 
 	return (
 		<>
@@ -252,6 +294,7 @@ export default async function HomePage() {
 					<Banner4 site={site} />
 				</div>
 			</div>
+			<FooterBanner site={site} />
 			<Footer />
 		</>
 	);
