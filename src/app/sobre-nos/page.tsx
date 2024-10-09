@@ -2,7 +2,7 @@ import Footer from '@/components/footer';
 import PublicNavbar from '@/components/PublicNavbar';
 import { getSite } from '@/services/auth';
 
-const HeroContent = ({ site }: any) => {
+const Banner1 = ({ site }: any) => {
 	return (
 		<div className="w-full flex flex-col gap-2 px-4 items-center mt-20 md:px-32">
 			<div className="w-full">
@@ -34,7 +34,6 @@ const HeroContent = ({ site }: any) => {
 export default async function AboutPage() {
 	const site = await getSite();
 	// console.log(site?.acf);
-	// console.log(site?.acf?.banner_sobre_1?.hero_linha_1);
 
 	return (
 		<>
@@ -43,7 +42,7 @@ export default async function AboutPage() {
 					<PublicNavbar />
 				</div>
 				<div className="w-full flex relative mb-10 flex-col">
-					<HeroContent site={site} />
+					<Banner1 site={site} />
 				</div>
 			</div>
 			<Footer />
