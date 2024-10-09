@@ -139,7 +139,7 @@ const Banner4 = ({ site }: any) => {
 					<Link
 						href={site?.acf?.banner_4?.comecar_agora_url || ''}
 						target="_blank"
-						className="cursor-pointer bg-primary text-white py-2 px-3 md:px-6 md:py-3 rounded-xl w-full flex justify-center items-center text-xs md:text-sm"
+						className="cursor-pointer bg-primary text-white py-4 md:py-2 px-3 md:px-6 rounded-xl w-full flex justify-center items-center text-xs md:text-sm"
 					>
 						Começar agora
 					</Link>
@@ -237,7 +237,7 @@ const Banner4 = ({ site }: any) => {
 
 export const FooterBanner = ({ site }: any) => {
 	return (
-		<div className="w-full flex flex-col md:flex-row gap-2 px-12 mt-10 md:mt-60 py-10 items-center">
+		<div className="w-full flex flex-col md:flex-row gap-2 px-2 md:px-12 mt-10 md:mt-60 py-10 items-center">
 			<div
 				className="flex flex-col md:flex-row bg-cover bg-center bg-no-repeat w-full rounded-3xl px-10 pt-10"
 				style={{
@@ -286,7 +286,7 @@ export default async function HomePage() {
 
 	return (
 		<>
-			<div className="md:py-6 px-4 md:px-8 !max-w-[1440px] mx-auto">
+			<div className="md:py-6 md:px-8 !max-w-[1440px] mx-auto">
 				<div className="w-full flex flex-col p-2 md:p-4 items-center">
 					<PublicNavbar />
 				</div>

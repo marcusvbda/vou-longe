@@ -114,7 +114,7 @@ export default async function AboutPage() {
 
 	return (
 		<>
-			<div className="md:py-6 px-4 md:px-8 !max-w-[1440px] mx-auto">
+			<div className="md:py-6 md:px-8 !max-w-[1440px] mx-auto">
 				<div className="w-full flex flex-col p-2 md:p-4 items-center">
 					<PublicNavbar />
 				</div>
